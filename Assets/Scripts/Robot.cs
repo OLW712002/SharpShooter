@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
+using StarterAssets;
 
 public class Robot : MonoBehaviour
 {
-    [SerializeField] Transform target;
-
+    FirstPersonController player;
     NavMeshAgent agent;
 
     private void Awake()
@@ -14,12 +14,11 @@ public class Robot : MonoBehaviour
 
     void Start()
     {
-        agent.SetDestination(target.position);
+        player = FindFirstObjectByType<FirstPersonController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        agent.SetDestination(player.transform.position);
     }
 }
