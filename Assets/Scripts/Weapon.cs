@@ -3,22 +3,28 @@ using StarterAssets;
 
 public class Weapon : MonoBehaviour
 {
-    StarterAssetsInputs inputs;
+    [SerializeField] int gunDamage = 1;
+
+    StarterAssetsInputs starterAssetsInpouts;
 
     void Awake()
     {
-        inputs = GetComponentInParent<StarterAssetsInputs>();
+        starterAssetsInpouts = GetComponentInParent<StarterAssetsInputs>();
     }
     
     void Update()
     {
-        if (inputs.shoot)
+        if (starterAssetsInpouts.shoot)
         {
             RaycastHit hit;
 
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
-            if (hit.collider != null) Debug.Log(hit.collider.name);
-            inputs.ShootInput(false);
+            if (hit.collider != null)
+            {
+                hit.collider.GetComponent<Robot>()?.TakeDamage(gunDamage);
+                Debug.Log(hit.collider.name);
+            }
+            starterAssetsInpouts.ShootInput(false);
         }
 
         
