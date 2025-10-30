@@ -4,6 +4,7 @@ using StarterAssets;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] ParticleSystem gunFlash;
     [SerializeField] int gunDamage = 1;
     [SerializeField] float fireCooldown = 1f;
 
@@ -28,6 +29,8 @@ public class Weapon : MonoBehaviour
     {
         isOverHeat = true;
         StartCoroutine(OverHeatCoroutine(fireCooldown));
+
+        gunFlash.Play();
 
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
