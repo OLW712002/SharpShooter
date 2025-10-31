@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     StarterAssetsInputs starterAssetsInpouts;
 
     bool isOverHeat = false;
+    bool wasShooting = false;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour
         {
             ShootProcess();
         }
+        wasShooting = starterAssetsInpouts.shoot;
     }
 
     void ShootProcess()
