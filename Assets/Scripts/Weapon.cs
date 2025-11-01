@@ -20,7 +20,9 @@ public class Weapon : MonoBehaviour
     
     void Update()
     {
-        if (starterAssetsInpouts.shoot && !isOverHeat)
+        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
+
+        if (starterAssetsInpouts.shoot && !isOverHeat && !wasShooting)
         {
             ShootProcess();
         }
