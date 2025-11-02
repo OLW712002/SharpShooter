@@ -27,6 +27,7 @@ public class Weapon : MonoBehaviour
             ShootProcess();
         }
         wasShooting = starterAssetsInpouts.shoot;
+        starterAssetsInpouts.ShootInput(false);
     }
 
     void ShootProcess()
@@ -43,7 +44,7 @@ public class Weapon : MonoBehaviour
             hit.collider.GetComponent<Robot>()?.TakeDamage(gunDamage);
             Debug.Log(hit.collider.name);
         }
-        starterAssetsInpouts.ShootInput(false);
+        
     }
 
     IEnumerator OverHeatCoroutine(float cooldown)
