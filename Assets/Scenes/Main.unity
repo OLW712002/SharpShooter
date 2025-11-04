@@ -760,9 +760,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunFlash: {fileID: 1761742858261386668}
+  hitVFX: {fileID: 3499774932233767443, guid: bd2a66c5f5341384f8a3462a0fbb5944, type: 3}
+  vfxParent: {fileID: 1210922220}
   playerAnimator: {fileID: 1667375902}
   gunDamage: 1
   fireCooldown: 1
+--- !u!1 &1210922219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210922220}
+  m_Layer: 0
+  m_Name: VFX Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210922220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210922219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550300153
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,3 +6490,4 @@ SceneRoots:
   - {fileID: 3874650711247833525}
   - {fileID: 80980416}
   - {fileID: 1550300157}
+  - {fileID: 1210922220}

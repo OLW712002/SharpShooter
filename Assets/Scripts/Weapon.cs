@@ -5,6 +5,8 @@ using StarterAssets;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] ParticleSystem gunFlash;
+    [SerializeField] GameObject hitVFX;
+    [SerializeField] Transform vfxParent;
     [SerializeField] Animator playerAnimator;
     [SerializeField] int gunDamage = 1;
     [SerializeField] float fireCooldown = 1f;
@@ -47,6 +49,10 @@ public class Weapon : MonoBehaviour
         {
             hit.collider.GetComponent<Robot>()?.TakeDamage(gunDamage);
             Debug.Log(hit.collider.name);
+        }
+        if (hit.point != null)
+        {
+            Destroy(Instantiate(hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
         
     }
