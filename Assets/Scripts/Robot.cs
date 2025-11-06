@@ -5,6 +5,7 @@ using StarterAssets;
 public class Robot : MonoBehaviour
 {
     [SerializeField] int robotHealth = 3;
+    [SerializeField] float robotChasingRadius = 10f;
 
     FirstPersonController player;
     NavMeshAgent agent;
@@ -21,7 +22,11 @@ public class Robot : MonoBehaviour
 
     void Update()
     {
-        agent.SetDestination(player.transform.position);
+        if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius)
+        {
+            agent.SetDestination(player.transform.position);
+        }
+        
     }
 
     public void TakeDamage(int dmg)
