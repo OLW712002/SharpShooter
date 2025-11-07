@@ -8,11 +8,15 @@ public class Robot : MonoBehaviour
     [SerializeField] float robotChasingRadius = 10f;
 
     FirstPersonController player;
+    Animator robotAnimator;
     NavMeshAgent agent;
+
+    const string robotChasingString = "isChasing";
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        robotAnimator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -25,8 +29,14 @@ public class Robot : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius)
         {
             agent.SetDestination(player.transform.position);
+            robotAnimator.SetBool(robotChasingString, true);
         }
-        
+        else
+        {
+            agent.SetDestination(transform.position);
+            robotAnimator.SetBool(robotChasingString, false);
+        }
+            
     }
 
     public void TakeDamage(int dmg)
