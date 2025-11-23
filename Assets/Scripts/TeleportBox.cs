@@ -18,8 +18,9 @@ public class TeleportBox : MonoBehaviour
             starterAssetsInputs.enabled = false;
 
             Debug.Log("box " + other.gameObject.name);
-            other.transform.position = target.position;
-            
+            //other.transform.position = target.position;
+            other.GetComponent<Player>().Teleport(target.position);
+
             playerController.enabled = true;
             basicRigidBodyPush.enabled = true;
             basicRigidBodyPush.enabled = true;
