@@ -4494,6 +4494,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8134127951278409916, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
+    - target: {fileID: 8134127951278409916, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: vfxParent
       value: 
       objectReference: {fileID: 1210922220}

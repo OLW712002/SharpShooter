@@ -8,8 +8,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject hitVFX;
     [SerializeField] Transform vfxParent;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] int gunDamage = 1;
-    [SerializeField] float fireCooldown = 1f;
+    [SerializeField] WeaponSO gunType;
+    //[SerializeField] int gunDamage = 1;
+    //[SerializeField] float fireCooldown = 1f;
 
     StarterAssetsInputs starterAssetsInpouts;
 
@@ -38,7 +39,7 @@ public class Weapon : MonoBehaviour
     void ShootProcess()
     {
         isOverHeat = true;
-        StartCoroutine(OverHeatCoroutine(fireCooldown));
+        StartCoroutine(OverHeatCoroutine(gunType.fireCooldown));
 
         gunFlash.Play();
         playerAnimator.Play(playerShootString, 0, 0);
@@ -47,7 +48,7 @@ public class Weapon : MonoBehaviour
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
         if (hit.collider != null)
         {
-            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(gunDamage);
+            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(gunType.gunDmg);
             Debug.Log(hit.collider.name);
         }
         if (hit.point != null)
