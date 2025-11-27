@@ -55,7 +55,6 @@ public class Weapon : MonoBehaviour
         {
             Destroy(Instantiate(hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
-        
     }
 
     IEnumerator OverHeatCoroutine(float cooldown)
