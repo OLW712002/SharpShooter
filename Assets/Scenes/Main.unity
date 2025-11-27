@@ -4485,19 +4485,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 984740241213905328, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5926178988558817971, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134127951278409916, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: gunType
-      value: 
-      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
-    - target: {fileID: 8134127951278409916, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+    - target: {fileID: 8109093647157810996, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: vfxParent
       value: 
       objectReference: {fileID: 1210922220}
@@ -4545,14 +4533,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8134127951278409916, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 999316104806143403, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1623334040}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &519948129
 GameObject:
@@ -9657,33 +9641,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2120708220}
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
---- !u!1 &1623334038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 999316104806143403, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 513413681}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1623334040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623334038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d44f328739a7904b893a80ab12b2bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunFlash: {fileID: 1821374981}
-  hitVFX: {fileID: 3499774932233767443, guid: bd2a66c5f5341384f8a3462a0fbb5944, type: 3}
-  vfxParent: {fileID: 1210922220}
-  playerAnimator: {fileID: 1693904770}
-  gunType: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
---- !u!95 &1693904770 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8014352485254404976, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 513413681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722126584
 GameObject:
   m_ObjectHideFlags: 0
@@ -12435,11 +12392,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!198 &1821374981 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5203536507409676173, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 513413681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826648328
 GameObject:
   m_ObjectHideFlags: 0

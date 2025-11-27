@@ -30,25 +30,26 @@ public class ActiveWeapon : Weapon
 
         if (starterAssetsInpouts.shoot && !isOverHeat && !wasShooting)
         {
-            ShootProcess();
+            ShootProcess(gunType);
         }
         wasShooting = starterAssetsInpouts.shoot;
         starterAssetsInpouts.ShootInput(false);
     }
 
-    void ShootProcess()
+    void ShootProcess(WeaponSO weapon)
     {
         isOverHeat = true;
-        StartCoroutine(OverHeatCoroutine(gunType.fireCooldown));
+        StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
         gunFlash.Play();
+
         playerAnimator.Play(playerShootString, 0, 0);
 
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
         if (hit.collider != null)
         {
-            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(gunType.gunDmg);
+            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
             Debug.Log(hit.collider.name);
         }
         if (hit.point != null)
