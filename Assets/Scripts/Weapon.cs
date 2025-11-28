@@ -62,4 +62,5 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSecondsRealtime(cooldown);
         isOverHeat = false;
     }
+
 }
