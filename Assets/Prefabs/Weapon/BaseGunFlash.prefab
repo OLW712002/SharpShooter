@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5082760335659428659}
   - component: {fileID: 3374173935321263054}
   m_Layer: 3
-  m_Name: EmissionParticle
+  m_Name: BaseGunFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
