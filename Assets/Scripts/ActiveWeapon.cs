@@ -7,6 +7,7 @@ public class ActiveWeapon : Weapon
     [SerializeField] ParticleSystem gunFlash;
     [SerializeField] GameObject hitVFX;
     [SerializeField] Transform vfxParent;
+    [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
     [SerializeField] WeaponSO gunType;
     //[SerializeField] int gunDamage = 1;
@@ -41,7 +42,9 @@ public class ActiveWeapon : Weapon
         isOverHeat = true;
         StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
-        gunFlash.Play();
+        //gunFlash.Play();
+        ParticleSystem gunFlasht = Instantiate(gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
+        Destroy(gunFlasht.gameObject, 2f);
 
         playerAnimator.Play(playerShootString, 0, 0);
 
