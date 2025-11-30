@@ -43,7 +43,7 @@ public class ActiveWeapon : Weapon
         StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
         //gunFlash.Play();
-        ParticleSystem gunFlasht = Instantiate(gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
+        ParticleSystem gunFlasht = Instantiate(gunType.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlasht.gameObject, 2f);
 
         playerAnimator.Play(playerShootString, 0, 0);

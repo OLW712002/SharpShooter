@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunDmg: 5
   fireCooldown: 3
+  gunFlash: {fileID: 2155443863999404587, guid: 30e95cc0725b17545b8bc46bcada6893, type: 3}
+  hitVFX: {fileID: 0}

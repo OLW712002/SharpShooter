@@ -10,7 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 222289855044158734, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
       propertyPath: m_Name
-      value: BaseGunFlash
+      value: MachinegunGunFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082760335659428659, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.20617461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082760335659428659, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082760335659428659, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082760335659428659, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6843323763783043244, guid: 68a61a8a32a79024eb31c725088433b6, type: 3}
       propertyPath: m_LocalPosition.x
