@@ -4,14 +4,10 @@ using System.Collections;
 
 public class ActiveWeapon : Weapon
 {
-    [SerializeField] ParticleSystem gunFlash;
-    [SerializeField] GameObject hitVFX;
     [SerializeField] Transform vfxParent;
     [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
     [SerializeField] WeaponSO gunType;
-    //[SerializeField] int gunDamage = 1;
-    //[SerializeField] float fireCooldown = 1f;
 
     StarterAssetsInputs starterAssetsInpouts;
 
@@ -42,9 +38,8 @@ public class ActiveWeapon : Weapon
         isOverHeat = true;
         StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
-        //gunFlash.Play();
-        ParticleSystem gunFlasht = Instantiate(gunType.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
-        Destroy(gunFlasht.gameObject, 2f);
+        ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
+        Destroy(gunFlashParticle.gameObject, 2f);
 
         playerAnimator.Play(playerShootString, 0, 0);
 
@@ -57,7 +52,7 @@ public class ActiveWeapon : Weapon
         }
         if (hit.point != null)
         {
-            Destroy(Instantiate(hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
+            Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
     }
 
