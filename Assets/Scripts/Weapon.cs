@@ -1,59 +1,37 @@
 using UnityEngine;
 using System.Collections;
-using StarterAssets;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] ParticleSystem gunFlash;
-    [SerializeField] GameObject hitVFX;
     [SerializeField] Transform vfxParent;
+    [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] WeaponSO gunType;
-    //[SerializeField] int gunDamage = 1;
-    //[SerializeField] float fireCooldown = 1f;
-
-    StarterAssetsInputs starterAssetsInpouts;
-
-    bool isOverHeat = false;
-    bool wasShooting = false;
-
-    const string playerShootString = "Shoot";
-
-    void Awake()
-    {
-        starterAssetsInpouts = GetComponentInParent<StarterAssetsInputs>();
-    }
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
+    protected const string playerShootString = "Shoot";
 
-        if (starterAssetsInpouts.shoot && !isOverHeat && !wasShooting)
-        {
-            ShootProcess();
-        }
-        wasShooting = starterAssetsInpouts.shoot;
-        starterAssetsInpouts.ShootInput(false);
-    }
+    protected bool isOverHeat = false;
+    protected bool wasShooting = false;
 
-    void ShootProcess()
+    protected void ShootProcess(WeaponSO weapon)
     {
         isOverHeat = true;
-        StartCoroutine(OverHeatCoroutine(gunType.fireCooldown));
+        StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
-        gunFlash.Play();
+        ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
+        Destroy(gunFlashParticle.gameObject, 2f);
+
         playerAnimator.Play(playerShootString, 0, 0);
 
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
         if (hit.collider != null)
         {
-            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(gunType.gunDmg);
+            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
             Debug.Log(hit.collider.name);
         }
         if (hit.point != null)
         {
-            Destroy(Instantiate(hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
+            Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
     }
 

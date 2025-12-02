@@ -1,16 +1,28 @@
+using StarterAssets;
 using UnityEngine;
 
-public class ActiveWeapon : MonoBehaviour
+public class ActiveWeapon : Weapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] WeaponSO gunType;
+
+    StarterAssetsInputs starterAssetsInpouts;
+    
+    void Awake()
     {
-        
+        starterAssetsInpouts = GetComponentInParent<StarterAssetsInputs>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
+
+        if (starterAssetsInpouts.shoot && !isOverHeat && !wasShooting)
+        {
+            ShootProcess(gunType);
+        }
+        wasShooting = starterAssetsInpouts.shoot;
+        starterAssetsInpouts.ShootInput(false);
     }
+
+    
 }
