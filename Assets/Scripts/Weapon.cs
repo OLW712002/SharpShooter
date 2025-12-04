@@ -9,13 +9,8 @@ public abstract class Weapon : MonoBehaviour
     
     protected const string playerShootString = "Shoot";
 
-    protected bool isOverHeat = false;
-    protected bool wasShooting = false;
-
     protected void ShootProcess(WeaponSO weapon)
     {
-        isOverHeat = true;
-        StartCoroutine(OverHeatCoroutine(weapon.fireCooldown));
 
         ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlashParticle.gameObject, 2f);
@@ -33,13 +28,10 @@ public abstract class Weapon : MonoBehaviour
         {
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
+
     }
 
-    IEnumerator OverHeatCoroutine(float cooldown)
-    {
-        yield return new WaitForSecondsRealtime(cooldown);
-        isOverHeat = false;
-    }
+
 
 
 }

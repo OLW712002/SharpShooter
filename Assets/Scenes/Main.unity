@@ -4488,7 +4488,7 @@ PrefabInstance:
     - target: {fileID: 8109093647157810996, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: gunType
       value: 
-      objectReference: {fileID: 11400000, guid: b22e808796030a8488d413fa27613789, type: 2}
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
     - target: {fileID: 8109093647157810996, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: vfxParent
       value: 
