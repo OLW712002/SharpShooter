@@ -25,7 +25,7 @@ public class ActiveWeapon : Weapon
             
             elapsedTime = 0f;
         }
-        if (!starterAssetsInpouts.shoot) starterAssetsInpouts.ShootInput(false);
+        //if (!starterAssetsInpouts.shoot) starterAssetsInpouts.ShootInput(false);
     }
 
     
