@@ -22,7 +22,7 @@ public abstract class Weapon : MonoBehaviour
         if (hit.collider != null)
         {
             hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
         }
         if (hit.point != null)
         {

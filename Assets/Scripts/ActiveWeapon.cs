@@ -18,14 +18,11 @@ public class ActiveWeapon : Weapon
     {
         elapsedTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
-
         if (starterAssetsInpouts.shoot && elapsedTime > gunType.fireCooldown)
         {
             ShootProcess(gunType);
-            
-            elapsedTime = 0f;
+            elapsedTime = 0f;   
         }
-        //if (!starterAssetsInpouts.shoot) starterAssetsInpouts.ShootInput(false);
     }
 
     
