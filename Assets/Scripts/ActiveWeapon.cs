@@ -21,6 +21,7 @@ public class ActiveWeapon : Weapon
         if (starterAssetsInpouts.shoot && elapsedTime > gunType.fireCooldown)
         {
             ShootProcess(gunType);
+            starterAssetsInpouts.ShootInput(false);
             elapsedTime = 0f;   
         }
     }
