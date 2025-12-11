@@ -1,9 +1,11 @@
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActiveWeapon : Weapon
 {
     [SerializeField] WeaponSO gunType;
+    [SerializeField] PlayerInput playerInput;
 
     float elapsedTime = 0f;
 
@@ -21,8 +23,11 @@ public class ActiveWeapon : Weapon
         if (starterAssetsInpouts.shoot && elapsedTime > gunType.fireCooldown)
         {
             ShootProcess(gunType);
+            elapsedTime = 0f;
+        }
+        if (!gunType.isAutomatic || playerInput.actions[playerShootString].WasReleasedThisFrame())
+        {
             starterAssetsInpouts.ShootInput(false);
-            elapsedTime = 0f;   
         }
     }
 

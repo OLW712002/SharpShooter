@@ -5,6 +5,7 @@ public class WeaponSO : ScriptableObject
 {
     public int gunDmg = 1;
     public float fireCooldown = 1f;
+    public bool isAutomatic;
     public ParticleSystem gunFlash;
     public GameObject hitVFX;
     

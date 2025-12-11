@@ -47,8 +47,16 @@ namespace StarterAssets
 
 		public void OnShoot(InputValue value)
 		{
+			Debug.Log("Check");
 			ShootInput(value.isPressed);
 		}
+
+		//public void OnShoot(InputAction.CallbackContext context)
+		//{
+		//	if (context.started) ShootInput(true);
+		//	if (context.canceled) ShootInput(false);
+		//}
+
 #endif
 
 
