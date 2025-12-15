@@ -13463,6 +13463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 1579738842896194293, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
+      propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: b22e808796030a8488d413fa27613789, type: 2}
     - target: {fileID: 5793494853690932042, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.893533
@@ -13589,6 +13593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machinegun Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 3869819246733858056, guid: a7e10fee0abf7da4f98bfee7b0949654, type: 3}
+      propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
     - target: {fileID: 8088078857631003831, guid: a7e10fee0abf7da4f98bfee7b0949654, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3366246
@@ -13646,6 +13654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2226103113457856249, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
+      propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
     - target: {fileID: 6588282714236915526, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.17113781

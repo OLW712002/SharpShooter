@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PickupWeapon : Weapon
 {
-    [SerializeField] WeaponSO gunType;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
