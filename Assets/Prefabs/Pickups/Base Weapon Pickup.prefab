@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063657969177575252}
   - component: {fileID: -3798747193873244437}
+  - component: {fileID: 709215921085390963}
   m_Layer: 0
   m_Name: Base Weapon Pickup
   m_TagString: Untagged
@@ -133,6 +134,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunType: {fileID: 0}
   rotateSpeed: 75
+--- !u!136 &709215921085390963
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442137273076579305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7994039702863531461
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +166,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8155015255125902148}
-  - component: {fileID: 3600608592951701358}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -166,26 +189,3 @@ Transform:
   - {fileID: 2874187885256097962}
   m_Father: {fileID: 1063657969177575252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3600608592951701358
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7994039702863531461}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

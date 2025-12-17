@@ -55,4 +55,9 @@ public class ActiveWeapon : Weapon
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
     }
+
+    public void SwitchWeapon(WeaponSO weaponSO)
+    {
+        Debug.Log(weaponSO.name);
+    }
 }

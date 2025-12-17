@@ -15,4 +15,10 @@ public class PickupWeapon : Weapon
     {
         transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(playerTagString)) other.gameObject.GetComponentInChildren<ActiveWeapon>().SwitchWeapon(gunType);
+        Destroy(gameObject);
+    }
 }
