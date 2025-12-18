@@ -101,11 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d44f328739a7904b893a80ab12b2bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxParent: {fileID: 0}
+  weaponSO: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
   gunFlashParent: {fileID: 5560489350007593566}
   playerAnimator: {fileID: 2450087675117900976}
-  gunType: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
-  playerInput: {fileID: 0}
 --- !u!1 &4604599773715876616
 GameObject:
   m_ObjectHideFlags: 0

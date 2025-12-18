@@ -132,11 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d44f328739a7904b893a80ab12b2bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxParent: {fileID: 0}
+  weaponSO: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
   gunFlashParent: {fileID: 8456237402129384186}
   playerAnimator: {fileID: 726885915797678400}
-  gunType: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
-  playerInput: {fileID: 0}
 --- !u!1001 &4850443546093856678
 PrefabInstance:
   m_ObjectHideFlags: 0

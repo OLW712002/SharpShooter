@@ -4,18 +4,21 @@ using UnityEngine.InputSystem;
 
 public class ActiveWeapon : Weapon
 {
-    [SerializeField] Transform vfxParent;
     [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] PlayerInput playerInput;
 
+    const string vfxParentString = "VFX Parent";
     float elapsedTime = 0f;
 
     StarterAssetsInputs starterAssetsInpouts;
+    Transform vfxParent;
+    PlayerInput playerInput;
 
     void Awake()
     {
         starterAssetsInpouts = GetComponentInParent<StarterAssetsInputs>();
+        vfxParent = GameObject.Find(vfxParentString).transform;
+        playerInput = FindFirstObjectByType<PlayerInput>();
     }
 
     void Update()
@@ -23,13 +26,13 @@ public class ActiveWeapon : Weapon
         elapsedTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
 
-        if (starterAssetsInpouts.shoot && elapsedTime > gunType.fireCooldown)
+        if (starterAssetsInpouts.shoot && elapsedTime > weaponSO.fireCooldown)
         {
-            ShootProcess(gunType);
+            ShootProcess(weaponSO);
             elapsedTime = 0f;
         }
 
-        if (!gunType.isAutomatic || playerInput.actions[playerShootString].WasReleasedThisFrame())
+        if (!weaponSO.isAutomatic || playerInput.actions[playerShootString].WasReleasedThisFrame())
         {
             starterAssetsInpouts.ShootInput(false);
         }
@@ -56,8 +59,10 @@ public class ActiveWeapon : Weapon
         }
     }
 
-    public void SwitchWeapon(WeaponSO weaponSO)
-    {
-        Debug.Log(weaponSO.name);
-    }
+    //public void SwitchWeapon(WeaponSO weaponSO)
+    //{
+        
+    //    GameObject newWeapon = Instantiate(weaponSO.weaponPrefab);
+    //    Destroy(this);
+    //}
 }

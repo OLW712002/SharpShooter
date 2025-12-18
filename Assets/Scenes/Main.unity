@@ -4485,6 +4485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 125766487456177469, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_Name
+      value: Current Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 999316104806143403, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: Machinegun
@@ -13435,6 +13439,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4217120915137994424, guid: e112bcede6ebd1f42878e86f3565c767, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
+    - target: {fileID: 4217120915137994424, guid: e112bcede6ebd1f42878e86f3565c767, type: 3}
       propertyPath: vfxParent
       value: 
       objectReference: {fileID: 1210922220}
@@ -13465,6 +13473,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1579738842896194293, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
       propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: b22e808796030a8488d413fa27613789, type: 2}
+    - target: {fileID: 1579738842896194293, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
+      propertyPath: weaponSO
       value: 
       objectReference: {fileID: 11400000, guid: b22e808796030a8488d413fa27613789, type: 2}
     - target: {fileID: 5793494853690932042, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
@@ -13601,6 +13613,10 @@ PrefabInstance:
       propertyPath: gunType
       value: 
       objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
+    - target: {fileID: 3869819246733858056, guid: a7e10fee0abf7da4f98bfee7b0949654, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
     - target: {fileID: 5695806579110847629, guid: a7e10fee0abf7da4f98bfee7b0949654, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -13668,6 +13684,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226103113457856249, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
       propertyPath: gunType
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
+    - target: {fileID: 2226103113457856249, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
+      propertyPath: weaponSO
       value: 
       objectReference: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
     - target: {fileID: 6588282714236915526, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
