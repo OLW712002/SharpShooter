@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6cdb8d7d07200747bdc4b4c060fae15, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 8834973470374165139, guid: 2b03012951e88594ebc75875a27a772b, type: 3}
   gunDmg: 5
   fireCooldown: 3
+  isAutomatic: 0
   gunFlash: {fileID: 2155443863999404587, guid: 30e95cc0725b17545b8bc46bcada6893, type: 3}
   hitVFX: {fileID: 4710882121062569540, guid: 5baab33af15de074a821728d86b40145, type: 3}
