@@ -36,6 +36,8 @@ public class ActiveWeapon : Weapon
         {
             starterAssetsInpouts.ShootInput(false);
         }
+
+        ZoomProcess(weaponSO);
     }
 
     void ShootProcess(WeaponSO weapon)
@@ -56,6 +58,17 @@ public class ActiveWeapon : Weapon
         if (hit.point != null)
         {
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
+        }
+    }
+
+    void ZoomProcess(WeaponSO weaponSO)
+    {
+        if (!weaponSO.canZoom) return;
+
+        if (starterAssetsInpouts.zoom)
+        {
+            Debug.Log("Zooming");
+            
         }
     }
 
