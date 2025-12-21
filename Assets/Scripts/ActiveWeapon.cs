@@ -10,38 +10,31 @@ public class ActiveWeapon : Weapon
     const string vfxParentString = "VFX Parent";
     float elapsedTime = 0f;
 
-    StarterAssetsInputs starterAssetsInpouts;
+    StarterAssetsInputs starterAssetsInputs;
     Transform vfxParent;
     PlayerInput playerInput;
 
     void Awake()
     {
-        starterAssetsInpouts = GetComponentInParent<StarterAssetsInputs>();
+        starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
         vfxParent = GameObject.Find(vfxParentString).transform;
         playerInput = FindFirstObjectByType<PlayerInput>();
     }
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInpouts.shoot);
+        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(starterAssetsInputs.shoot);
 
-        if (starterAssetsInpouts.shoot && elapsedTime > weaponSO.fireCooldown)
-        {
-            ShootProcess(weaponSO);
-            elapsedTime = 0f;
-        }
-
-        if (!weaponSO.isAutomatic || playerInput.actions[playerShootString].WasReleasedThisFrame())
-        {
-            starterAssetsInpouts.ShootInput(false);
-        }
-
+        ShootProcess(weaponSO);
+        StopShootingProcess();
         ZoomProcess(weaponSO);
     }
 
+
     void ShootProcess(WeaponSO weapon)
     {
+        elapsedTime += Time.deltaTime;
+        if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown) return;
 
         ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlashParticle.gameObject, 2f);
@@ -53,11 +46,20 @@ public class ActiveWeapon : Weapon
         if (hit.collider != null)
         {
             hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
-            //Debug.Log(hit.collider.name);
         }
         if (hit.point != null)
         {
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
+        }
+
+        elapsedTime = 0f;
+    }
+
+    void StopShootingProcess()
+    {
+        if (!weaponSO.isAutomatic || playerInput.actions[playerShootString].WasReleasedThisFrame())
+        {
+            starterAssetsInputs.ShootInput(false);
         }
     }
 
@@ -65,7 +67,7 @@ public class ActiveWeapon : Weapon
     {
         if (!weaponSO.canZoom) return;
 
-        if (starterAssetsInpouts.zoom)
+        if (starterAssetsInputs.zoom)
         {
             Debug.Log("Zooming");
             
