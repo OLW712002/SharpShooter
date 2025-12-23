@@ -8,6 +8,7 @@ public class WeaponSO : ScriptableObject
     public float fireCooldown = 1f;
     public bool isAutomatic = false;
     public bool canZoom = false;
+    public float zoomFOV = 10f;
     public ParticleSystem gunFlash;
     public GameObject hitVFX;
     

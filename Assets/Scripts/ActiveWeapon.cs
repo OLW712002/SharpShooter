@@ -1,6 +1,8 @@
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Cinemachine;
 
 public class ActiveWeapon : Weapon
 {
@@ -9,16 +11,25 @@ public class ActiveWeapon : Weapon
 
     const string vfxParentString = "VFX Parent";
     float elapsedTime = 0f;
+    float baseVerticalFOV;
 
     StarterAssetsInputs starterAssetsInputs;
     Transform vfxParent;
     PlayerInput playerInput;
+    CinemachineVirtualCamera cinemachineVirtualCamera;
+    Image zoomVignette;
 
     void Awake()
     {
         starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
         vfxParent = GameObject.Find(vfxParentString).transform;
         playerInput = FindFirstObjectByType<PlayerInput>();
+        cinemachineVirtualCamera = FindFirstObjectByType<CinemachineVirtualCamera>();
+        zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
+        Debug.Log(zoomVignette);
+
+        baseVerticalFOV = cinemachineVirtualCamera.m_Lens.FieldOfView;
+        zoomVignette.enabled = false;
     }
 
     void Update()
@@ -67,10 +78,19 @@ public class ActiveWeapon : Weapon
     {
         if (!weaponSO.canZoom) return;
 
-        if (starterAssetsInputs.zoom)
+        if (starterAssetsInputs.needChangeZoomState)
         {
-            Debug.Log("Zooming");
-            
+            if (starterAssetsInputs.zoom)
+            {
+                cinemachineVirtualCamera.m_Lens.FieldOfView = weaponSO.zoomFOV;
+                zoomVignette.enabled = true;
+            }
+            else
+            {
+                cinemachineVirtualCamera.m_Lens.FieldOfView = baseVerticalFOV;
+                zoomVignette.enabled = false;
+            }
+            starterAssetsInputs.needChangeZoomState = false;
         }
     }
 

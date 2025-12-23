@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool shoot;
 		public bool zoom;
+		public bool needChangeZoomState = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -60,6 +61,7 @@ namespace StarterAssets
 
 		public void OnZoom(InputValue value)
 		{
+			needChangeZoomState = true;
 			if (!zoom) ZoomInput(value.isPressed);
 			else ZoomInput(false);
 		}
