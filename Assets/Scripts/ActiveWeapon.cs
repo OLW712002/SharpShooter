@@ -11,25 +11,28 @@ public class ActiveWeapon : Weapon
 
     const string vfxParentString = "VFX Parent";
     float elapsedTime = 0f;
-    float baseVerticalFOV;
+    float defaultVerticalFOV;
+    float defaultRotationSpeed;
 
     StarterAssetsInputs starterAssetsInputs;
     Transform vfxParent;
     PlayerInput playerInput;
-    CinemachineVirtualCamera cinemachineVirtualCamera;
+    CinemachineVirtualCamera playerFollowCamera;
     Image zoomVignette;
+    FirstPersonController playerController;
 
     void Awake()
     {
         starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
         vfxParent = GameObject.Find(vfxParentString).transform;
         playerInput = FindFirstObjectByType<PlayerInput>();
-        cinemachineVirtualCamera = FindFirstObjectByType<CinemachineVirtualCamera>();
+        playerFollowCamera = FindFirstObjectByType<CinemachineVirtualCamera>();
         zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
-        Debug.Log(zoomVignette);
+        playerController = GetComponentInParent<FirstPersonController>();
 
-        baseVerticalFOV = cinemachineVirtualCamera.m_Lens.FieldOfView;
+        defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
         zoomVignette.enabled = false;
+        defaultRotationSpeed = playerController.RotationSpeed;
     }
 
     void Update()
@@ -63,6 +66,9 @@ public class ActiveWeapon : Weapon
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
 
+        ZoomOut();
+        starterAssetsInputs.ZoomInput(false);
+
         elapsedTime = 0f;
     }
 
@@ -80,18 +86,24 @@ public class ActiveWeapon : Weapon
 
         if (starterAssetsInputs.needChangeZoomState)
         {
-            if (starterAssetsInputs.zoom)
-            {
-                cinemachineVirtualCamera.m_Lens.FieldOfView = weaponSO.zoomFOV;
-                zoomVignette.enabled = true;
-            }
-            else
-            {
-                cinemachineVirtualCamera.m_Lens.FieldOfView = baseVerticalFOV;
-                zoomVignette.enabled = false;
-            }
+            if (starterAssetsInputs.zoom) ZoomIn();
+            else ZoomOut();
             starterAssetsInputs.needChangeZoomState = false;
         }
+    }
+
+    void ZoomIn()
+    {
+        playerFollowCamera.m_Lens.FieldOfView = weaponSO.zoomFOV;
+        zoomVignette.enabled = true;
+        playerController.RotationSpeed = weaponSO.zoomRotationSpeed;
+    }
+
+    void ZoomOut()
+    {
+        playerFollowCamera.m_Lens.FieldOfView = defaultVerticalFOV;
+        zoomVignette.enabled = false;
+        playerController.RotationSpeed = defaultRotationSpeed;
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)
