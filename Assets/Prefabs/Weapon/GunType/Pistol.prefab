@@ -104,6 +104,9 @@ MonoBehaviour:
   weaponSO: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
   gunFlashParent: {fileID: 5560489350007593566}
   playerAnimator: {fileID: 2450087675117900976}
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4604599773715876616
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class ActiveWeapon : Weapon
 {
     [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] LayerMask interactionLayer;
 
     const string vfxParentString = "VFX Parent";
     float elapsedTime = 0f;
@@ -56,12 +57,12 @@ public class ActiveWeapon : Weapon
         playerAnimator.Play(playerShootString, 0, 0);
 
         RaycastHit hit;
-        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity);
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, interactionLayer, QueryTriggerInteraction.Ignore);
         if (hit.collider != null)
         {
             hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
         }
-        if (hit.point != null)
+        if (hit.point != null && hit.point != Vector3.zero)
         {
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }
