@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class ActiveWeapon : Weapon
 {
@@ -10,17 +11,20 @@ public class ActiveWeapon : Weapon
     [SerializeField] Animator playerAnimator;
     [SerializeField] LayerMask interactionLayer;
 
-    const string vfxParentString = "VFX Parent";
-    float elapsedTime = 0f;
-    float defaultVerticalFOV;
-    float defaultRotationSpeed;
-
     StarterAssetsInputs starterAssetsInputs;
     Transform vfxParent;
     PlayerInput playerInput;
     CinemachineVirtualCamera playerFollowCamera;
     Image zoomVignette;
     FirstPersonController playerController;
+    TextMeshProUGUI ammoText;
+
+    const string vfxParentString = "VFX Parent";
+    const string ammoTextString = "Ammo Text";
+
+    float elapsedTime = 0f;
+    float defaultVerticalFOV;
+    float defaultRotationSpeed;
 
     void Awake()
     {
@@ -30,10 +34,16 @@ public class ActiveWeapon : Weapon
         playerFollowCamera = FindFirstObjectByType<CinemachineVirtualCamera>();
         zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
         playerController = GetComponentInParent<FirstPersonController>();
+        ammoText = GameObject.Find(ammoTextString).GetComponent<TextMeshProUGUI>();
 
         defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
         zoomVignette.enabled = false;
         defaultRotationSpeed = playerController.RotationSpeed;
+    }
+
+    void Start()
+    {
+        ammoText.text = weaponSO.currentAmmo.ToString("D2");
     }
 
     void Update()
@@ -49,7 +59,10 @@ public class ActiveWeapon : Weapon
     void ShootProcess(WeaponSO weapon)
     {
         elapsedTime += Time.deltaTime;
-        if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown) return;
+        if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown || weaponSO.currentAmmo <= 0) return;
+
+        weaponSO.currentAmmo--;
+        ammoText.text = weaponSO.currentAmmo.ToString("D2");
 
         ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlashParticle.gameObject, 2f);

@@ -10,6 +10,8 @@ public class WeaponSO : ScriptableObject
     public bool canZoom = false;
     public float zoomFOV = 10f;
     public float zoomRotationSpeed = 0.3f;
+    public int maxAmmo = 10;
+    public int currentAmmo = 10;
     public ParticleSystem gunFlash;
     public GameObject hitVFX;
     
