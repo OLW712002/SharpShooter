@@ -35,14 +35,13 @@ public class ActiveWeapon : Weapon
         zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
         playerController = GetComponentInParent<FirstPersonController>();
         ammoText = GameObject.Find(ammoTextString).GetComponent<TextMeshProUGUI>();
-
-        defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
-        zoomVignette.enabled = false;
-        defaultRotationSpeed = playerController.RotationSpeed;
     }
 
     void Start()
     {
+        defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
+        zoomVignette.enabled = false;
+        defaultRotationSpeed = playerController.RotationSpeed;
         ammoText.text = weaponSO.currentAmmo.ToString("D2");
     }
 
@@ -118,6 +117,11 @@ public class ActiveWeapon : Weapon
         playerFollowCamera.m_Lens.FieldOfView = defaultVerticalFOV;
         zoomVignette.enabled = false;
         playerController.RotationSpeed = defaultRotationSpeed;
+    }
+
+    public WeaponSO GetCurrentWeaponSO()
+    {
+        return weaponSO;
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)

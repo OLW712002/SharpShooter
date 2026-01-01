@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponSO : ScriptableObject
 {
     public GameObject weaponPrefab;
+    public GameObject pickupPrefab;
     public int gunDmg = 1;
     public float fireCooldown = 1f;
     public bool isAutomatic = false;

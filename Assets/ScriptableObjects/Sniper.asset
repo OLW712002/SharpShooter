@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 8834973470374165139, guid: 2b03012951e88594ebc75875a27a772b, type: 3}
+  pickupPrefab: {fileID: 1522819835531034615, guid: 4b42d3a7231a54746a570ab065031641, type: 3}
   gunDmg: 5
   fireCooldown: 3
   isAutomatic: 0
   canZoom: 1
+  zoomFOV: 10
+  zoomRotationSpeed: 0.3
+  maxAmmo: 10
+  currentAmmo: 8
   gunFlash: {fileID: 2155443863999404587, guid: 30e95cc0725b17545b8bc46bcada6893, type: 3}
   hitVFX: {fileID: 4710882121062569540, guid: 5baab33af15de074a821728d86b40145, type: 3}

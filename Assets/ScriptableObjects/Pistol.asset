@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 4444859563185127086, guid: 092829b953c58cd49a7c89a33631292b, type: 3}
+  pickupPrefab: {fileID: 2173774574620232699, guid: 25778492268cc8e47b3679b0de164bee, type: 3}
   gunDmg: 2
   fireCooldown: 1
   isAutomatic: 0
+  canZoom: 0
+  zoomFOV: 10
+  zoomRotationSpeed: 0.3
+  maxAmmo: 10
+  currentAmmo: 0
   gunFlash: {fileID: 5224515864280146138, guid: 6e5d574605155ab41829e9774de2bed6, type: 3}
   hitVFX: {fileID: 3499774932233767443, guid: bd2a66c5f5341384f8a3462a0fbb5944, type: 3}
