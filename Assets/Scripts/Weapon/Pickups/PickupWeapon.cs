@@ -9,7 +9,7 @@ public class PickupWeapon : Pickups
 
     void Awake()
     {
-
+        
     }
 
     protected override void OnPickup(WeaponSO weaponSO)
@@ -24,6 +24,9 @@ public class PickupWeapon : Pickups
     void CreateNewPickup(WeaponSO weaponSO, bool createWithParameter)
     {
         GameObject newPickup = Instantiate(weaponSO.pickupPrefab);
+        Vector3 forwardCamera = Camera.main.transform.forward;
+        forwardCamera.y = 0;
+        newPickup.transform.position = gameObject.transform.position + forwardCamera.normalized * 5;
         if (createWithParameter) newPickup.GetComponent<PickupWeapon>().weaponSO = oldWeaponSO;
     }
 }
