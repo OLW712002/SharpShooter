@@ -42,7 +42,7 @@ public class ActiveWeapon : Weapon
         defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
         zoomVignette.enabled = false;
         defaultRotationSpeed = playerController.RotationSpeed;
-        ammoText.text = weaponSO.currentAmmo.ToString("D2");
+        ammoText.text = storedAmmo.ToString("D2");
     }
 
     void Update()
@@ -58,10 +58,9 @@ public class ActiveWeapon : Weapon
     void ShootProcess(WeaponSO weapon)
     {
         elapsedTime += Time.deltaTime;
-        if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown || weaponSO.currentAmmo <= 0) return;
+        if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown || storedAmmo <= 0) return;
 
-        weaponSO.currentAmmo--;
-        ammoText.text = weaponSO.currentAmmo.ToString("D2");
+        ReduceAmmo(1);
 
         ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlashParticle.gameObject, 2f);
@@ -119,9 +118,15 @@ public class ActiveWeapon : Weapon
         playerController.RotationSpeed = defaultRotationSpeed;
     }
 
-    public WeaponSO GetCurrentWeaponSO()
+    public int GetCurrentAmmoStored()
     {
-        return weaponSO;
+        return storedAmmo;
+    }
+
+    public void ReduceAmmo(int i)
+    {
+        storedAmmo -= i;
+        ammoText.text = storedAmmo.ToString("D2");
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)
