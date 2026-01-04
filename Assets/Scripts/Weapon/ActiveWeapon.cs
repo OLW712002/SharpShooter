@@ -118,15 +118,20 @@ public class ActiveWeapon : Weapon
         playerController.RotationSpeed = defaultRotationSpeed;
     }
 
-    public int GetCurrentAmmoStored()
-    {
-        return storedAmmo;
-    }
-
     public void ReduceAmmo(int i)
     {
         storedAmmo -= i;
         ammoText.text = storedAmmo.ToString("D2");
+    }
+
+    public WeaponSO GetWeaponSO()
+    {
+        return weaponSO;
+    }
+
+    public int GetCurrentAmmoStored()
+    {
+        return storedAmmo;
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)
