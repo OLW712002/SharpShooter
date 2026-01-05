@@ -25,6 +25,8 @@ public class ActiveWeapon : Weapon
     float elapsedTime = 0f;
     float defaultVerticalFOV;
     float defaultRotationSpeed;
+    bool needAmmoParameter = false;
+    int ammoParameter;
 
     void Awake()
     {
@@ -39,6 +41,8 @@ public class ActiveWeapon : Weapon
 
     void Start()
     {
+        if (needAmmoParameter) storedAmmo = ammoParameter;
+
         defaultVerticalFOV = playerFollowCamera.m_Lens.FieldOfView;
         zoomVignette.enabled = false;
         defaultRotationSpeed = playerController.RotationSpeed;
@@ -132,6 +136,12 @@ public class ActiveWeapon : Weapon
     public int GetCurrentAmmoStored()
     {
         return storedAmmo;
+    }
+
+    public void SetAmmoParameter(int i)
+    {
+        needAmmoParameter = true;
+        ammoParameter = i;
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)

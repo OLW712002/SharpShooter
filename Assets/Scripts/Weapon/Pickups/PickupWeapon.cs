@@ -25,10 +25,17 @@ public class PickupWeapon : Pickups
         Destroy(oldActiveWeapon.gameObject);
 
         //Create new weapon
-        Instantiate(weaponSO.weaponPrefab, GameObject.Find(currentWeaponString).transform);
+        CreateNewWeapon(weaponSO, storedAmmo, true);
 
         //Create new pickup weapon
         CreateNewPickup(oldWeaponSO, oldWeaponAmmoRemain, true);
+    }
+
+    void CreateNewWeapon(WeaponSO weaponSO, int ammoInNewWeapon, bool createWithParameter)
+    {
+        Transform weaponParent = GameObject.Find(currentWeaponString).transform;
+        GameObject newWeapon = Instantiate(weaponSO.weaponPrefab, weaponParent);
+        if (createWithParameter) newWeapon.GetComponent<ActiveWeapon>().SetAmmoParameter(ammoInNewWeapon);
     }
 
     void CreateNewPickup(WeaponSO weaponSO, int ammoInNewPickup, bool createWithParameter)
