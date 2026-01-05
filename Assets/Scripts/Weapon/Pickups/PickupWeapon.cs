@@ -4,12 +4,19 @@ public class PickupWeapon : Pickups
 {
     ActiveWeapon oldActiveWeapon;
     WeaponSO oldWeaponSO;
+    Transform weaponPickupParent;
 
     int oldWeaponAmmoRemain;
     bool needAmmoParameter = false;
     int ammoParameter; 
 
     const string currentWeaponString = "Current Weapon";
+    const string weaponPickupParentString = "Weapon Pickup";
+
+    void Awake()
+    {
+        weaponPickupParent = GameObject.Find(weaponPickupParentString).transform;
+    }
 
     void Start()
     {
@@ -40,7 +47,7 @@ public class PickupWeapon : Pickups
 
     void CreateNewPickup(WeaponSO weaponSO, int ammoInNewPickup, bool createWithParameter)
     {
-        GameObject newPickup = Instantiate(weaponSO.pickupPrefab);
+        GameObject newPickup = Instantiate(weaponSO.pickupPrefab, weaponPickupParent);
         Vector3 forwardCamera = Camera.main.transform.forward;
         forwardCamera.y = 0;
         newPickup.transform.position = gameObject.transform.position + forwardCamera.normalized * 5;
