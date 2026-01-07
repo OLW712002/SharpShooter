@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 0}
   storedAmmo: 10
-  rotateSpeed: 2
+  rotateSpeed: 75
 --- !u!1001 &4551504714981454186
 PrefabInstance:
   m_ObjectHideFlags: 0

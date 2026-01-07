@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class PickupAmmo : Pickups
 {
-    string weaponName;
-    string[] wordsInThisObjectName;
-
     protected override void OnPickup(WeaponSO weaponSO)
     {
-        weaponName = GameObject.Find(currentWeaponString).transform.GetChild(0).name;
-        wordsInThisObjectName = gameObject.name.Split(' ');
-        if (weaponName == wordsInThisObjectName[0])
+        string weaponName = GameObject.Find(currentWeaponString).transform.GetChild(0).name;
+        if (weaponName == weaponSO.weaponPrefab.name)
         {
             Debug.Log("Get Ammo");
         }
