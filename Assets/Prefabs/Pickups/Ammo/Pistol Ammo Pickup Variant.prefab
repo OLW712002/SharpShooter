@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol Ammo Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5639192881199911431, guid: 73f31a9e022378c498d5e7edaf64074e, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2909999113431767486, guid: 73f31a9e022378c498d5e7edaf64074e, type: 3}

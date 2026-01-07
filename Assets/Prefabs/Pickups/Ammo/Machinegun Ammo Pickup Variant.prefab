@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machinegun Ammo Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5639192881199911431, guid: 73f31a9e022378c498d5e7edaf64074e, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2909999113431767486, guid: 73f31a9e022378c498d5e7edaf64074e, type: 3}

@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2585043178771248171}
   - component: {fileID: 4324005807386779051}
+  - component: {fileID: 5639192881199911431}
   m_Layer: 0
   m_Name: Base Ammo Pickup
   m_TagString: Untagged
@@ -167,7 +168,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -175,6 +176,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &5639192881199911431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366931352649665720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa5bff44cd886140b85268bb7574ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 0}
+  storedAmmo: 10
+  rotateSpeed: 2
 --- !u!1001 &4551504714981454186
 PrefabInstance:
   m_ObjectHideFlags: 0

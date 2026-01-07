@@ -10,7 +10,7 @@ public class PickupWeapon : Pickups
     bool needAmmoParameter = false;
     int ammoParameter; 
 
-    const string currentWeaponString = "Current Weapon";
+    
     const string weaponPickupParentString = "Weapon Pickup";
 
     void Awake()
