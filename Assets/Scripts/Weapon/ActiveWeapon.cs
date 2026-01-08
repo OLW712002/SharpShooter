@@ -125,6 +125,7 @@ public class ActiveWeapon : Weapon
     public void ReduceAmmo(int i)
     {
         storedAmmo -= i;
+        storedAmmo = Mathf.Clamp(storedAmmo, 0, weaponSO.maxAmmo);
         ammoText.text = storedAmmo.ToString("D2");
     }
 

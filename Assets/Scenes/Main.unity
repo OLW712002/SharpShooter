@@ -5399,6 +5399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol Ammo Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4350601930298781218, guid: 3ab8a841610dee94aabc36539353b7ba, type: 3}
+      propertyPath: storedAmmo
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5908136090232391694, guid: 3ab8a841610dee94aabc36539353b7ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.15751067
@@ -9794,6 +9798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machinegun Ammo Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6275582872296247144, guid: 34e4dde50a7868044841270dad187d6b, type: 3}
+      propertyPath: storedAmmo
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10260,6 +10268,10 @@ PrefabInstance:
     - target: {fileID: 4475177129013645561, guid: a3b24cfc53a245442a28e4c511bfa1e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018672759103452885, guid: a3b24cfc53a245442a28e4c511bfa1e5, type: 3}
+      propertyPath: storedAmmo
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6322989353784862826, guid: a3b24cfc53a245442a28e4c511bfa1e5, type: 3}
       propertyPath: m_Name
