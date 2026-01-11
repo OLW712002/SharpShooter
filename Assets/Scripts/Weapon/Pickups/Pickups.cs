@@ -2,9 +2,14 @@ using UnityEngine;
 
 public abstract class Pickups : Weapon
 {
+    public enum PickupType { Ammo, Weapon }
+
     [SerializeField] protected float rotateSpeed = 2f;
+    [SerializeField] protected PickupType pickupType;
 
     protected const string currentWeaponString = "Current Weapon";
+
+    public PickupType GetPickupType() { return pickupType; }
 
     void Update()
     {

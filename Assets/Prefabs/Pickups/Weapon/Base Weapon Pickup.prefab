@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6973bddb4a992438e880e8ad0a82dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunType: {fileID: 0}
+  weaponSO: {fileID: 0}
+  storedAmmo: 10
   rotateSpeed: 75
+  pickupType: 1
 --- !u!136 &709215921085390963
 CapsuleCollider:
   m_ObjectHideFlags: 0

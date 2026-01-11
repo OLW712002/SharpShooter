@@ -122,11 +122,16 @@ public class ActiveWeapon : Weapon
         playerController.RotationSpeed = defaultRotationSpeed;
     }
 
-    public void ReduceAmmo(int i)
+    void ReduceAmmo(int i)
     {
         storedAmmo -= i;
         storedAmmo = Mathf.Clamp(storedAmmo, 0, weaponSO.maxAmmo);
         ammoText.text = storedAmmo.ToString("D2");
+    }
+
+    public void HandlePickup(Pickups pickups, int amount)
+    {
+        if (pickups.GetPickupType() == Pickups.PickupType.Ammo) ReduceAmmo(-amount);
     }
 
     public WeaponSO GetWeaponSO()

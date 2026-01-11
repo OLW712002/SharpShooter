@@ -8,7 +8,8 @@ public class PickupAmmo : Pickups
         string currentWeaponName = currentWeapon.GetComponent<ActiveWeapon>().GetWeaponSO().weaponPrefab.name;
         if (currentWeaponName == weaponSO.weaponPrefab.name)
         {
-            currentWeapon.GetComponent<ActiveWeapon>().ReduceAmmo(-storedAmmo);
+            currentWeapon.GetComponent<ActiveWeapon>().HandlePickup(this, storedAmmo);
+
         }
     }
 }
