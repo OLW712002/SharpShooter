@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5195220399818946696}
   - component: {fileID: 726885915797678400}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: GunModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8456237402129384186}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: GunFlashParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2832961862136808159}
   - component: {fileID: 4217120915137994424}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Machinegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: a0f4846e0ca256346bf495cd34d5240f, type: 2}
+  storedAmmo: 10
   gunFlashParent: {fileID: 8456237402129384186}
   playerAnimator: {fileID: 726885915797678400}
   interactionLayer:
@@ -201,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e8c5e5625b7bd884899700bf60088473, type: 3}
       propertyPath: m_Name
       value: Heavy_machine_gun_01_Blue_Team
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e8c5e5625b7bd884899700bf60088473, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

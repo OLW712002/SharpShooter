@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6999833766164617551}
   - component: {fileID: 2450087675117900976}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: GunModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9167071393210162128}
   - component: {fileID: 4681581146769620017}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 8f16353d48975634d9e030179d429c75, type: 2}
+  storedAmmo: 10
   gunFlashParent: {fileID: 5560489350007593566}
   playerAnimator: {fileID: 2450087675117900976}
   interactionLayer:
@@ -116,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5560489350007593566}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: GunFlashParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9d91fae2703d43046a1c37804ae23dad, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
