@@ -18,6 +18,7 @@ public class ActiveWeapon : Weapon
     Image zoomVignette;
     FirstPersonController playerController;
     TextMeshProUGUI ammoText;
+    CinemachineImpulseSource cinemachineImpulseSource;
 
     const string vfxParentString = "VFX Parent";
     const string ammoTextString = "Ammo Text";
@@ -37,6 +38,7 @@ public class ActiveWeapon : Weapon
         zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
         playerController = GetComponentInParent<FirstPersonController>();
         ammoText = GameObject.Find(ammoTextString).GetComponent<TextMeshProUGUI>();
+        cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     void Start()
@@ -65,6 +67,8 @@ public class ActiveWeapon : Weapon
         if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown || storedAmmo <= 0) return;
 
         ReduceAmmo(1);
+
+        cinemachineImpulseSource.GenerateImpulse();
 
         ParticleSystem gunFlashParticle = Instantiate(weapon.gunFlash, gunFlashParent.position, gunFlashParent.rotation, gunFlashParent);
         Destroy(gunFlashParticle.gameObject, 2f);
