@@ -10,6 +10,7 @@ public class ActiveWeapon : Weapon
     [SerializeField] Transform gunFlashParent;
     [SerializeField] Animator playerAnimator;
     [SerializeField] LayerMask interactionLayer;
+    [SerializeField] MeshRenderer gunMeshRenderer;
 
     StarterAssetsInputs starterAssetsInputs;
     Transform vfxParent;
@@ -117,6 +118,7 @@ public class ActiveWeapon : Weapon
         playerFollowCamera.m_Lens.FieldOfView = weaponSO.zoomFOV;
         zoomVignette.enabled = true;
         playerController.RotationSpeed = weaponSO.zoomRotationSpeed;
+        gunMeshRenderer.enabled = false;
     }
 
     void ZoomOut()
@@ -124,6 +126,7 @@ public class ActiveWeapon : Weapon
         playerFollowCamera.m_Lens.FieldOfView = defaultVerticalFOV;
         zoomVignette.enabled = false;
         playerController.RotationSpeed = defaultRotationSpeed;
+        gunMeshRenderer.enabled = true;
     }
 
     void ReduceAmmo(int i)

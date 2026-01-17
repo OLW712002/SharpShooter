@@ -140,6 +140,7 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+  gunMeshRenderer: {fileID: 3763330026644158752}
 --- !u!114 &-5826488259054883825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,5 +270,10 @@ PrefabInstance:
 --- !u!4 &2625920073116697167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 860f35edef6dcfe40b58b14593dfeafb, type: 3}
+  m_PrefabInstance: {fileID: 2592838744135247268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3763330026644158752 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 860f35edef6dcfe40b58b14593dfeafb, type: 3}
   m_PrefabInstance: {fileID: 2592838744135247268}
   m_PrefabAsset: {fileID: 0}
