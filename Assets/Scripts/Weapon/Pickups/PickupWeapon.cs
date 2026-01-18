@@ -7,10 +7,7 @@ public class PickupWeapon : Pickups
     Transform weaponPickupParent;
 
     int oldWeaponAmmoRemain;
-    bool needAmmoParameter = false;
-    int ammoParameter; 
 
-    
     const string weaponPickupParentString = "Weapon Pickup";
 
     void Awake()
@@ -52,16 +49,5 @@ public class PickupWeapon : Pickups
         forwardCamera.y = 0;
         newPickup.transform.position = gameObject.transform.position + forwardCamera.normalized * 5;
         if (createWithParameter) newPickup.GetComponent<PickupWeapon>().SetAmmoParameter(ammoInNewPickup);
-    }
-
-    //public void InitStoredAmmo(int i)
-    //{
-    //    storedAmmo = i;
-    //}
-
-    public void SetAmmoParameter(int i)
-    {
-        needAmmoParameter = true;
-        ammoParameter = i;
     }
 }

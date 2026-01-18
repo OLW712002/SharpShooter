@@ -27,8 +27,6 @@ public class ActiveWeapon : Weapon
     float elapsedTime = 0f;
     float defaultVerticalFOV;
     float defaultRotationSpeed;
-    bool needAmmoParameter = false;
-    int ammoParameter;
 
     void Awake()
     {
@@ -139,22 +137,6 @@ public class ActiveWeapon : Weapon
     public void HandlePickup(Pickups pickups, int amount)
     {
         if (pickups.GetPickupType() == Pickups.PickupType.Ammo) ReduceAmmo(-amount);
-    }
-
-    public WeaponSO GetWeaponSO()
-    {
-        return weaponSO;
-    }
-
-    public int GetCurrentAmmoStored()
-    {
-        return storedAmmo;
-    }
-
-    public void SetAmmoParameter(int i)
-    {
-        needAmmoParameter = true;
-        ammoParameter = i;
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)
