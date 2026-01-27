@@ -4,6 +4,7 @@ using StarterAssets;
 
 public class Robot : MonoBehaviour
 {
+    [SerializeField] GameObject robotExplosion;
     [SerializeField] int robotHealth = 3;
     [SerializeField] float robotChasingRadius = 10f;
 
@@ -42,6 +43,10 @@ public class Robot : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         robotHealth -= dmg;
-        if (robotHealth <= 0) Destroy(gameObject);
+        if (robotHealth <= 0)
+        {
+            Instantiate(robotExplosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
