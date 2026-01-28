@@ -12,6 +12,7 @@ public class Robot : MonoBehaviour
     Animator robotAnimator;
     NavMeshAgent agent;
 
+    const string playerString = "Player";
     const string robotChasingString = "isChasing";
 
     private void Awake()
@@ -27,17 +28,28 @@ public class Robot : MonoBehaviour
 
     void Update()
     {
+        HandleChasing();
+
+    }
+
+    void HandleChasing()
+    {
         if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius)
         {
+            //Chase the player
             agent.SetDestination(player.transform.position);
             robotAnimator.SetBool(robotChasingString, true);
         }
         else
         {
-            agent.SetDestination(transform.position);
-            robotAnimator.SetBool(robotChasingString, false);
+            StopChasing();
         }
-            
+    }
+
+    void StopChasing()
+    {
+        agent.SetDestination(transform.position);
+        robotAnimator.SetBool(robotChasingString, false);
     }
 
     public void TakeDamage(int dmg)
@@ -45,8 +57,21 @@ public class Robot : MonoBehaviour
         robotHealth -= dmg;
         if (robotHealth <= 0)
         {
-            Instantiate(robotExplosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            SelfDestruct();
+        }
+    }
+
+    public void SelfDestruct()
+    {
+        Instantiate(robotExplosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(playerString))
+        {
+            Debug.Log("Kaboom");
         }
     }
 }
