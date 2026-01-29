@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
+using System.Collections;
 
 public class Robot : MonoBehaviour
 {
     [SerializeField] GameObject robotExplosion;
     [SerializeField] int robotHealth = 3;
     [SerializeField] float robotChasingRadius = 10f;
+    [SerializeField] float robotSelfDestructDelay = 2f;
+    [SerializeField] float robotBulgeOutScale = 2f;
 
     FirstPersonController player;
     Animator robotAnimator;
@@ -14,6 +17,8 @@ public class Robot : MonoBehaviour
 
     const string playerString = "Player";
     const string robotChasingString = "isChasing";
+
+    bool isBulgeOut = false;
 
     private void Awake()
     {
@@ -34,7 +39,7 @@ public class Robot : MonoBehaviour
 
     void HandleChasing()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius)
+        if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius && !isBulgeOut)
         {
             //Chase the player
             agent.SetDestination(player.transform.position);
@@ -57,12 +62,25 @@ public class Robot : MonoBehaviour
         robotHealth -= dmg;
         if (robotHealth <= 0)
         {
-            SelfDestruct();
+            Debug.Log("Die");
+            StartCoroutine(SelfDestruct(0));
         }
     }
 
-    public void SelfDestruct()
+    IEnumerator SelfDestruct(float robotSelfDestructDelay)
     {
+        if (robotSelfDestructDelay > 0)
+        {
+            float value = transform.localScale.x;
+            float elapsedTime = 0f;
+            while (elapsedTime < robotSelfDestructDelay)
+            {
+                elapsedTime += Time.deltaTime;
+                transform.localScale = Vector3.one * Mathf.Lerp(value, robotBulgeOutScale, elapsedTime / robotSelfDestructDelay);
+                yield return null;
+            }
+            transform.localScale = Vector3.one * robotBulgeOutScale;
+        }
         Instantiate(robotExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -72,6 +90,9 @@ public class Robot : MonoBehaviour
         if (other.CompareTag(playerString))
         {
             Debug.Log("Kaboom");
+            isBulgeOut = true;
+            StopChasing();
+            StartCoroutine(SelfDestruct(robotSelfDestructDelay));
         }
     }
 }
