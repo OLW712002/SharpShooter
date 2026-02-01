@@ -6,7 +6,6 @@ using System.Collections;
 public class Robot : MonoBehaviour
 {
     [SerializeField] GameObject robotExplosion;
-    [SerializeField] int robotHealth = 3;
     [SerializeField] float robotChasingRadius = 10f;
     [SerializeField] float robotSelfDestructDelay = 2f;
     [SerializeField] float robotBulgeOutScale = 2f;
@@ -14,6 +13,7 @@ public class Robot : MonoBehaviour
     FirstPersonController player;
     Animator robotAnimator;
     NavMeshAgent agent;
+    EnemyHealth robotHealth;
 
     const string playerString = "Player";
     const string robotChasingString = "isChasing";
@@ -24,6 +24,7 @@ public class Robot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         robotAnimator = GetComponentInChildren<Animator>();
+        robotHealth = GetComponent<EnemyHealth>();
     }
 
     void Start()
@@ -57,34 +58,6 @@ public class Robot : MonoBehaviour
         robotAnimator.SetBool(robotChasingString, false);
     }
 
-    public void TakeDamage(int dmg)
-    {
-        robotHealth -= dmg;
-        if (robotHealth <= 0)
-        {
-            Debug.Log("Die");
-            StartCoroutine(SelfDestruct(0));
-        }
-    }
-
-    IEnumerator SelfDestruct(float robotSelfDestructDelay)
-    {
-        if (robotSelfDestructDelay > 0)
-        {
-            float value = transform.localScale.x;
-            float elapsedTime = 0f;
-            while (elapsedTime < robotSelfDestructDelay)
-            {
-                elapsedTime += Time.deltaTime;
-                transform.localScale = Vector3.one * Mathf.Lerp(value, robotBulgeOutScale, elapsedTime / robotSelfDestructDelay);
-                yield return null;
-            }
-            transform.localScale = Vector3.one * robotBulgeOutScale;
-        }
-        Instantiate(robotExplosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerString))
@@ -92,7 +65,13 @@ public class Robot : MonoBehaviour
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            StartCoroutine(SelfDestruct(robotSelfDestructDelay));
+            StartCoroutine(robotHealth.SelfDestruct(GetParameterForExplosion(1)));
         }
+    }
+
+    public (GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyLocalScale, float enemyBulgeOutScale) GetParameterForExplosion(int i)
+    {
+        if (i == 0) return (robotExplosion, 0, transform.localScale, robotBulgeOutScale);
+        return (robotExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
     }
 }

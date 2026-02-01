@@ -78,7 +78,7 @@ public class ActiveWeapon : Weapon
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, interactionLayer, QueryTriggerInteraction.Ignore);
         if (hit.collider != null)
         {
-            hit.collider.GetComponentInParent<Robot>()?.TakeDamage(weapon.gunDmg);
+            hit.collider.GetComponentInParent<EnemyHealth>()?.TakeDamage(weapon.gunDmg);
         }
         if (hit.point != null && hit.point != Vector3.zero)
         {
