@@ -34,8 +34,8 @@ public class Robot : MonoBehaviour
 
     void Update()
     {
+        if (!player) return;
         HandleChasing();
-
     }
 
     void HandleChasing()

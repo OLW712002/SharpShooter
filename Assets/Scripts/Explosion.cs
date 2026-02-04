@@ -25,7 +25,12 @@ public class Explosion : MonoBehaviour
         //Debug.Log(hitCollider);
         foreach(Collider collider in hitCollider)
         {
-            collider.GetComponentInParent<PlayerHealth>()?.TakeDamage(explodeDmg);
+            PlayerHealth playerHealth = collider.GetComponentInParent<PlayerHealth>();
+            if (!playerHealth) continue;
+            playerHealth.TakeDamage(explodeDmg);
+            break;
+
+            //collider.GetComponentInParent<PlayerHealth>()?.TakeDamage(explodeDmg);
         }
     }
 }
