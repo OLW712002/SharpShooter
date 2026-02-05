@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
-using System.Collections;
 
 public class Robot : MonoBehaviour
 {

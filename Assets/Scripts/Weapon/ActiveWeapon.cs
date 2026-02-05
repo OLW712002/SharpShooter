@@ -140,8 +140,7 @@ public class ActiveWeapon : Weapon
     }
 
     //public void SwitchWeapon(WeaponSO weaponSO)
-    //{
-        
+    //{        
     //    GameObject newWeapon = Instantiate(weaponSO.weaponPrefab);
     //    Destroy(this);
     //}
