@@ -29,6 +29,7 @@ public class Robot : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<FirstPersonController>();
+        agent.enabled = true;
     }
 
     void Update()
