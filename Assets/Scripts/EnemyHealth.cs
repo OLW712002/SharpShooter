@@ -17,6 +17,11 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth -= dmg;
         if (enemyHealth <= 0)
         {
+            if (enemyClass == null)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
             Debug.Log("Die");
             var enemyExplosionParameters = enemyClass.GetParameterForExplosion(0);
             StartCoroutine(SelfDestruct(enemyExplosionParameters));
