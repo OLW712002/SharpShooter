@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
 
-public class Robot : MonoBehaviour
+public class Robot : Enemy
 {
-    [SerializeField] GameObject robotExplosion;
     [SerializeField] float robotChasingRadius = 10f;
     [SerializeField] float robotSelfDestructDelay = 2f;
     [SerializeField] float robotBulgeOutScale = 2f;
@@ -14,7 +13,6 @@ public class Robot : MonoBehaviour
     NavMeshAgent agent;
     EnemyHealth robotHealth;
 
-    const string playerString = "Player";
     const string robotChasingString = "isChasing";
 
     bool isBulgeOut = false;
@@ -71,7 +69,7 @@ public class Robot : MonoBehaviour
 
     public (GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyLocalScale, float enemyBulgeOutScale) GetParameterForExplosion(int i)
     {
-        if (i == 0) return (robotExplosion, 0, transform.localScale, robotBulgeOutScale);
-        return (robotExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
+        if (i == 0) return (enemyExplosion, 0, transform.localScale, robotBulgeOutScale);
+        return (enemyExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
     }
 }
