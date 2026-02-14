@@ -5,11 +5,11 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 5;
 
-    Robot enemyClass;
+    Enemy enemyClass;
 
     void Start()
     {
-        enemyClass = GetComponent<Robot>();
+        enemyClass = GetComponent<Enemy>();
     }
 
     public void TakeDamage(int dmg)

@@ -6233,6 +6233,7 @@ GameObject:
   - component: {fileID: 875629008}
   - component: {fileID: 875629010}
   - component: {fileID: 875629009}
+  - component: {fileID: 875629011}
   m_Layer: 0
   m_Name: Spawn Gate
   m_TagString: Untagged
@@ -6249,7 +6250,7 @@ Transform:
   m_GameObject: {fileID: 875629007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 8.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6290,6 +6291,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1, y: 2.4, z: 0.3}
   m_Center: {x: 0, y: 1.15, z: 0}
+--- !u!114 &875629011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875629007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdb3f1fc2bdc8d49b622fe71c65e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyExplosion: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
 --- !u!1 &900535174
 GameObject:
   m_ObjectHideFlags: 0

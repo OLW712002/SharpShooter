@@ -67,7 +67,7 @@ public class Robot : Enemy
         }
     }
 
-    public (GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyLocalScale, float enemyBulgeOutScale) GetParameterForExplosion(int i)
+    public override (GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyLocalScale, float enemyBulgeOutScale) GetParameterForExplosion(int i)
     {
         if (i == 0) return (enemyExplosion, 0, transform.localScale, robotBulgeOutScale);
         return (enemyExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
