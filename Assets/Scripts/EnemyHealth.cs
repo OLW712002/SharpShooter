@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 5;
+    [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
     Enemy enemyClass;
 
@@ -46,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         //Base explosion
-        Instantiate(data.enemyExposion, transform.position, Quaternion.identity);
+        Instantiate(data.enemyExposion, transform.position + enemyExplosionOffset, Quaternion.identity);
         Destroy(gameObject);
     }
 }
