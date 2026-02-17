@@ -8,7 +8,7 @@ public class Robot : Enemy
     [SerializeField] float robotSelfDestructDelay = 2f;
     [SerializeField] float robotBulgeOutScale = 2f;
 
-    FirstPersonController player;
+    FirstPersonController playerController;
     Animator robotAnimator;
     NavMeshAgent agent;
     EnemyHealth robotHealth;
@@ -26,22 +26,22 @@ public class Robot : Enemy
 
     void Start()
     {
-        player = FindFirstObjectByType<FirstPersonController>();
+        playerController = FindFirstObjectByType<FirstPersonController>();
         agent.enabled = true;
     }
 
     void Update()
     {
-        if (!player) return;
+        if (!playerController) return;
         HandleChasing();
     }
 
     void HandleChasing()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < robotChasingRadius && !isBulgeOut)
+        if (Vector3.Distance(transform.position, playerController.transform.position) < robotChasingRadius && !isBulgeOut)
         {
             //Chase the player
-            agent.SetDestination(player.transform.position);
+            agent.SetDestination(playerController.transform.position);
             robotAnimator.SetBool(robotChasingString, true);
         }
         else
