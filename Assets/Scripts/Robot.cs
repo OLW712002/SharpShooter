@@ -32,7 +32,11 @@ public class Robot : Enemy
 
     void Update()
     {
-        if (!playerController) return;
+        if (!playerController)
+        {
+            StopChasing();
+            return;
+        }
         HandleChasing();
     }
 
