@@ -6,12 +6,12 @@ public class Enemy : MonoBehaviour
 
     protected const string playerString = "Player";
 
-    public enum DestroyType
-    {
-        BulgeOut,
-        ShakeUnstable,
-        Instant
-    }
+    //public enum DestroyType
+    //{
+    //    BulgeOut,
+    //    ShakeUnstable,
+    //    Instant
+    //}
 
     public virtual (GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyLocalScale, float enemyBulgeOutScale) GetParameterForExplosion(int i)
     {
