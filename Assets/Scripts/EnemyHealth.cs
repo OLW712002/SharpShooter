@@ -3,6 +3,13 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public enum DestroyType
+    {
+        BulgeOut,
+        ShakeUnstable,
+        Instant
+    }
+
     [SerializeField] int enemyHealth = 5;
     [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
