@@ -9,8 +9,10 @@ public class EnemyHealth : MonoBehaviour
         ShakeUnstable,
         Instant
     }
-
     [SerializeField] int enemyHealth = 5;
+
+    [Header("Explosion Upon Death")]
+    [SerializeField] DestroyType destroyType;
     [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
     Enemy enemyClass;

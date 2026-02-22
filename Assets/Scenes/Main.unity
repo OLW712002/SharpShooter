@@ -6270,6 +6270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc42e2884c042e04aab56b3871d1cfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyType: 2
   enemyHealth: 5
   enemyExplosionOffset: {x: 0, y: 1, z: 0}
 --- !u!65 &875629010
@@ -6309,6 +6310,7 @@ MonoBehaviour:
   spawnedEnemy: {fileID: 569472004378683372, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
   spawnSpeedPerSec: 0.5
   spawnPoint: {fileID: 2032841818}
+  spawnRadius: 10
 --- !u!1 &900535174
 GameObject:
   m_ObjectHideFlags: 0
