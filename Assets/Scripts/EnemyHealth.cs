@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public IEnumerator SelfDestruct((GameObject enemyExposion, float enemySelfDestructDelay, Vector3 enemyBaseLocalScale, float enemyBulgeOutScale) data)
+    public IEnumerator SelfDestruct((GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyBaseLocalScale, float enemyBulgeOutScale) data)
     {
         //Bulge out before explosion
         if (data.enemySelfDestructDelay > 0)
@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         //Base explosion
-        Instantiate(data.enemyExposion, transform.position + enemyExplosionOffset, Quaternion.identity);
+        Instantiate(data.enemyExplosion, transform.position + enemyExplosionOffset, Quaternion.identity);
         Destroy(gameObject);
     }
 }
