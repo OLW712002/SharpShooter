@@ -15,6 +15,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] DestroyType destroyType;
     [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
+    [Header("BulgeOut")]
+    [SerializeField] GameObject enemyExplosion;
+    [SerializeField] float enemySelfDestructDelay = 2f;
+    [SerializeField] float enemyBulgeOutScale = 2f;
+
     Enemy enemyClass;
 
     void Start()
@@ -32,9 +37,13 @@ public class EnemyHealth : MonoBehaviour
                 Destroy(this.gameObject);
                 return;
             }
-            Debug.Log("Die");
-            var enemyExplosionParameters = enemyClass.GetParameterForExplosion(0);
-            StartCoroutine(SelfDestruct(enemyExplosionParameters));
+
+            //Use enemy.cs parameters
+            //var enemyExplosionParameters = enemyClass.GetParameterForExplosion(0);
+            //StartCoroutine(SelfDestruct(enemyExplosionParameters));
+
+            //Use this class's parameters
+            StartCoroutine(SelfDestruct((enemyExplosion, enemySelfDestructDelay, Vector3.one, enemyBulgeOutScale)));
         }
     }
 
