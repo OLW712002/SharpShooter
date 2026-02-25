@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using NaughtyAttributes;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -13,12 +14,14 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("Explosion Upon Death")]
     [SerializeField] DestroyType destroyType;
+    [SerializeField] GameObject enemyExplosion;
     [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
     [Header("BulgeOut")]
-    [SerializeField] GameObject enemyExplosion;
-    [SerializeField] float enemySelfDestructDelay = 2f;
-    [SerializeField] float enemyBulgeOutScale = 2f;
+    [ShowIf("IsBulgeOut")][SerializeField] float enemySelfDestructDelay = 2f;
+    [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 2f;
+
+    bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
 
     Enemy enemyClass;
 
