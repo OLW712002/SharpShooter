@@ -2,14 +2,37 @@ using UnityEngine;
 using System.Collections;
 using NaughtyAttributes;
 
+public enum DestroyType
+{
+    BulgeOut,
+    ShakeUnstable,
+    Instant
+}
+
+public class ExplosionParameters
+{
+    public DestroyType DestroyType { get; }
+    public GameObject EnemyExplosion { get; }
+    public float SelfDestructDelay { get; }
+    public Vector3 BaseLocalScale { get; }
+    public float BulgeOutScale { get; }
+
+    public ExplosionParameters(DestroyType destroyType, GameObject enemyExplosion, float selfDestructDelay, Vector3 baseLocalScale, float bulgeOutScale)
+    {
+        DestroyType = destroyType;
+        EnemyExplosion = enemyExplosion;
+
+        //Bulge out parameters
+        SelfDestructDelay = selfDestructDelay;
+        BaseLocalScale = baseLocalScale;
+        BulgeOutScale = bulgeOutScale;
+
+        //Shake unstable parameters can be added here in the future
+    }
+}
+
 public class EnemyHealth : MonoBehaviour
 {
-    public enum DestroyType
-    {
-        BulgeOut,
-        ShakeUnstable,
-        Instant
-    }
     [SerializeField] int enemyHealth = 5;
 
     [Header("Explosion Upon Death")]
@@ -18,8 +41,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] Vector3 enemyExplosionOffset = Vector3.zero;
 
     [Header("BulgeOut")]
-    [ShowIf("IsBulgeOut")][SerializeField] float enemySelfDestructDelay = 2f;
-    [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 2f;
+    [ShowIf("IsBulgeOut")][SerializeField] float enemySelfDestructDelay = 0f;
+    [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 0f;
 
     bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
 
@@ -70,5 +93,10 @@ public class EnemyHealth : MonoBehaviour
         //Base explosion
         Instantiate(data.enemyExplosion, transform.position + enemyExplosionOffset, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    public ExplosionParameters GetParameterForExplosion()
+    {
+        return new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, transform.localScale, enemyBulgeOutScale);
     }
 }
