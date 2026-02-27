@@ -5,8 +5,6 @@ using StarterAssets;
 public class Robot : Enemy
 {
     [SerializeField] float robotChasingRadius = 10f;
-    [SerializeField] float robotSelfDestructDelay = 2f;
-    [SerializeField] float robotBulgeOutScale = 2f;
 
     FirstPersonController playerController;
     Animator robotAnimator;
@@ -67,20 +65,20 @@ public class Robot : Enemy
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            StartCoroutine(robotHealth.SelfDestruct(GetParameterForExplosion(1)));
+            StartCoroutine(robotHealth.SelfDestruct(robotHealth.GetParameterForExplosion()));
         }
     }
 
-    public override
-        (
-            GameObject enemyExplosion,
-            float enemySelfDestructDelay,
-            Vector3 enemyLocalScale,
-            float enemyBulgeOutScale
-        )
-        GetParameterForExplosion(int i)
-    {
-        if (i == 0) return (enemyExplosion, 0, transform.localScale, robotBulgeOutScale);
-        return (enemyExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
-    }
+    //public override
+    //    (
+    //        GameObject enemyExplosion,
+    //        float enemySelfDestructDelay,
+    //        Vector3 enemyLocalScale,
+    //        float enemyBulgeOutScale
+    //    )
+    //    GetParameterForExplosion(int i)
+    //{
+    //    if (i == 0) return (enemyExplosion, 0, transform.localScale, robotBulgeOutScale);
+    //    return (enemyExplosion, robotSelfDestructDelay, transform.localScale, robotBulgeOutScale);
+    //}
 }

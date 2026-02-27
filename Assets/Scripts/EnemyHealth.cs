@@ -43,7 +43,6 @@ public class EnemyHealth : MonoBehaviour
     [Header("BulgeOut")]
     [ShowIf("IsBulgeOut")][SerializeField] float enemySelfDestructDelay = 0f;
     [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 0f;
-
     bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
 
     Enemy enemyClass;
@@ -69,34 +68,57 @@ public class EnemyHealth : MonoBehaviour
             //StartCoroutine(SelfDestruct(enemyExplosionParameters));
 
             //Use this class's parameters
-            StartCoroutine(SelfDestruct((enemyExplosion, enemySelfDestructDelay, Vector3.one, enemyBulgeOutScale)));
+            ExplosionParameters instantExplosion = new ExplosionParameters(DestroyType.Instant, enemyExplosion, 0f, transform.localScale, 1f);
+            StartCoroutine(SelfDestruct(instantExplosion));
         }
     }
 
-    public IEnumerator SelfDestruct((GameObject enemyExplosion, float enemySelfDestructDelay, Vector3 enemyBaseLocalScale, float enemyBulgeOutScale) data)
+    public IEnumerator SelfDestruct(ExplosionParameters explosionParameters)
     {
-        //Bulge out before explosion
-        if (data.enemySelfDestructDelay > 0)
+        switch(explosionParameters.DestroyType)
         {
-            Vector3 startValue = data.enemyBaseLocalScale;
-            Vector3 targetValue = data.enemyBaseLocalScale * data.enemyBulgeOutScale;
-            float elapsedTime = 0f;
-            while (elapsedTime < data.enemySelfDestructDelay)
-            {
-                elapsedTime += Time.deltaTime;
-                transform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTime / data.enemySelfDestructDelay);
-                yield return null;
-            }
-            transform.localScale = targetValue;
+            case DestroyType.BulgeOut:
+                Vector3 startValue = explosionParameters.BaseLocalScale;
+                Vector3 targetValue = explosionParameters.BaseLocalScale * explosionParameters.BulgeOutScale;
+                float elapsedTime = 0f;
+                while (elapsedTime < explosionParameters.SelfDestructDelay)
+                {
+                    elapsedTime += Time.deltaTime;
+                    transform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTime / explosionParameters.SelfDestructDelay);
+                    yield return null;
+                }
+                transform.localScale = targetValue;
+                break;
+            case DestroyType.ShakeUnstable:
+                //Implement shake unstable behavior here in the future
+                break;
+            case DestroyType.Instant:
+                //Do nothing, just explode immediately
+                break;
         }
 
+        //Bulge out before explosion
+        //if (data.enemySelfDestructDelay > 0)
+        //{
+        //    Vector3 startValue = data.enemyBaseLocalScale;
+        //    Vector3 targetValue = data.enemyBaseLocalScale * data.enemyBulgeOutScale;
+        //    float elapsedTime = 0f;
+        //    while (elapsedTime < data.enemySelfDestructDelay)
+        //    {
+        //        elapsedTime += Time.deltaTime;
+        //        transform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTime / data.enemySelfDestructDelay);
+        //        yield return null;
+        //    }
+        //    transform.localScale = targetValue;
+        //}
+
         //Base explosion
-        Instantiate(data.enemyExplosion, transform.position + enemyExplosionOffset, Quaternion.identity);
+        Instantiate(explosionParameters.EnemyExplosion, transform.position + enemyExplosionOffset, Quaternion.identity);
         Destroy(gameObject);
     }
 
     public ExplosionParameters GetParameterForExplosion()
     {
-        return new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, transform.localScale, enemyBulgeOutScale);
+        return new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, transform.localScale, enemyBulgeOutScale); ;
     }
 }
