@@ -21,13 +21,21 @@ public class ExplosionParameters
     {
         DestroyType = destroyType;
         EnemyExplosion = enemyExplosion;
-
         //Bulge out parameters
         SelfDestructDelay = selfDestructDelay;
         BaseLocalScale = baseLocalScale;
         BulgeOutScale = bulgeOutScale;
-
         //Shake unstable parameters can be added here in the future
+    }
+
+    public ExplosionParameters(DestroyType destroyType, GameObject enemyExplosion)
+    {
+        DestroyType = destroyType;
+        EnemyExplosion = enemyExplosion;
+        //Default values for bulge out parameters
+        SelfDestructDelay = 0f;
+        BaseLocalScale = Vector3.one;
+        BulgeOutScale = 1f;
     }
 }
 
@@ -68,7 +76,7 @@ public class EnemyHealth : MonoBehaviour
             //StartCoroutine(SelfDestruct(enemyExplosionParameters));
 
             //Use this class's parameters
-            ExplosionParameters instantExplosion = new ExplosionParameters(DestroyType.Instant, enemyExplosion, 0f, transform.localScale, 1f);
+            ExplosionParameters instantExplosion = new ExplosionParameters(DestroyType.Instant, enemyExplosion);
             StartCoroutine(SelfDestruct(instantExplosion));
         }
     }
