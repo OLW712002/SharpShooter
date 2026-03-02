@@ -49,7 +49,6 @@ namespace StarterAssets
 
 		public void OnShoot(InputValue value)
 		{
-			Debug.Log("Check");
 			ShootInput(value.isPressed);
 		}
 

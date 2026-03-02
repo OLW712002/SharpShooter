@@ -29,7 +29,7 @@ public class ExplosionParameters
         BaseLocalScale = baseLocalScale;
         BulgeOutScale = bulgeOutScale;
         //Default values for shake unstable parameters
-        ShakeDuration = 0f;
+        ShakeDuration = 1f;
         MaxShakeMagnitude = 0f;
         MagnitudeOverTime = AnimationCurve.Constant(0f, 1f, 0f);
     }
@@ -57,7 +57,7 @@ public class ExplosionParameters
         BaseLocalScale = Vector3.one;
         BulgeOutScale = 1f;
         //Default values for shake unstable parameters
-        ShakeDuration = 0f;
+        ShakeDuration = 1f;
         MaxShakeMagnitude = 0f;
         MagnitudeOverTime = AnimationCurve.Constant(0f, 1f, 0f);
     }
@@ -74,11 +74,11 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("BulgeOut")]
     [ShowIf("IsBulgeOut")][SerializeField] float enemySelfDestructDelay = 0f;
-    [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 0f;
+    [ShowIf("IsBulgeOut")][SerializeField] float enemyBulgeOutScale = 1f;
     bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
 
     [Header("ShakeUnstable")]
-    [ShowIf("IsShakeUnstable")][SerializeField] float enemyShakeDuration = 0f;
+    [ShowIf("IsShakeUnstable")][SerializeField] float enemyShakeDuration = 1f;
     [ShowIf("IsShakeUnstable")][SerializeField] float enemyMaxShakeMagnitude = 0f;
     [ShowIf("IsShakeUnstable")][SerializeField] AnimationCurve enemyMagnitudeOverTime = AnimationCurve.Constant(0f, 1f, 0f);
     bool IsShakeUnstable => destroyType == DestroyType.ShakeUnstable;
@@ -101,6 +101,13 @@ public class EnemyHealth : MonoBehaviour
                 return;
             }
 
+            if (destroyType == DestroyType.ShakeUnstable)
+            {
+                ExplosionParameters shakeExplosion = new ExplosionParameters(destroyType, enemyExplosion, enemyShakeDuration, enemyMaxShakeMagnitude, enemyMagnitudeOverTime);
+                StartCoroutine(SelfDestruct(shakeExplosion));
+                return;
+            }
+
             //Use enemy.cs parameters
             //var enemyExplosionParameters = enemyClass.GetParameterForExplosion(0);
             //StartCoroutine(SelfDestruct(enemyExplosionParameters));
@@ -118,17 +125,29 @@ public class EnemyHealth : MonoBehaviour
             case DestroyType.BulgeOut:
                 Vector3 startValue = explosionParameters.BaseLocalScale;
                 Vector3 targetValue = explosionParameters.BaseLocalScale * explosionParameters.BulgeOutScale;
-                float elapsedTime = 0f;
-                while (elapsedTime < explosionParameters.SelfDestructDelay)
+                float elapsedTimeBulge = 0f;
+                while (elapsedTimeBulge < explosionParameters.SelfDestructDelay)
                 {
-                    elapsedTime += Time.deltaTime;
-                    transform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTime / explosionParameters.SelfDestructDelay);
+                    elapsedTimeBulge += Time.deltaTime;
+                    transform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTimeBulge / explosionParameters.SelfDestructDelay);
                     yield return null;
                 }
                 transform.localScale = targetValue;
                 break;
             case DestroyType.ShakeUnstable:
-                //Implement shake unstable behavior here in the future
+                Vector3 originalLocalRotate = transform.localEulerAngles;
+                float elapsedTimeShake = 0f;
+                float internalFreq = 20f;
+                while (elapsedTimeShake < explosionParameters.ShakeDuration)
+                {
+                    elapsedTimeShake += Time.deltaTime;
+                    float normalizedTime = elapsedTimeShake / explosionParameters.ShakeDuration;
+                    float currentMagnitude = explosionParameters.MaxShakeMagnitude * explosionParameters.MagnitudeOverTime.Evaluate(normalizedTime);
+                    float offsetZ = Mathf.Sin(elapsedTimeShake * internalFreq * Mathf.PI * 2f) * currentMagnitude;
+                    transform.localEulerAngles = originalLocalRotate + new Vector3(0f, 0f, offsetZ);
+                    yield return null;
+                }
+                transform.localPosition = originalLocalRotate;
                 break;
             case DestroyType.Instant:
                 //Do nothing, just explode immediately
@@ -157,6 +176,16 @@ public class EnemyHealth : MonoBehaviour
 
     public ExplosionParameters GetParameterForExplosion()
     {
-        return new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, transform.localScale, enemyBulgeOutScale); ;
+        switch (destroyType)
+        {
+            case DestroyType.BulgeOut:
+                return new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, transform.localScale, enemyBulgeOutScale);
+            case DestroyType.ShakeUnstable:
+                return new ExplosionParameters(destroyType, enemyExplosion, enemyShakeDuration, enemyMaxShakeMagnitude, enemyMagnitudeOverTime);
+            case DestroyType.Instant:
+                return new ExplosionParameters(destroyType, enemyExplosion);
+            default: 
+                return new ExplosionParameters(DestroyType.Instant, enemyExplosion);
+        }
     }
 }
