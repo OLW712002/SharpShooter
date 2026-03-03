@@ -97,6 +97,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if (enemyClass == null)
             {
+                Debug.Log("No enemy class");
                 Destroy(this.gameObject);
                 return;
             }
