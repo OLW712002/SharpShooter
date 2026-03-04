@@ -65,7 +65,7 @@ public class Robot : Enemy
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            StartCoroutine(robotHealth.SelfDestruct(robotHealth.GetParameterForExplosion()));
+            StartCoroutine(robotHealth.Exploding(robotHealth.GetParameterForExplosion()));
         }
     }
 }

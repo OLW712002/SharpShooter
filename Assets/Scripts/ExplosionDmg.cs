@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class ExplosionDmg : MonoBehaviour
 {
     [SerializeField] float radius = 2f;
     [SerializeField] int explodeDmg = 3;
