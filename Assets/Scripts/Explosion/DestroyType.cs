@@ -59,4 +59,19 @@ public class ExplosionParameters
         MaxShakeMagnitude = 0f;
         MagnitudeOverTime = AnimationCurve.Constant(0f, 1f, 0f);
     }
+
+    public ExplosionParameters GetParameterForExplosion()
+    {
+        switch (DestroyType)
+        {
+            case DestroyType.BulgeOut:
+                return new ExplosionParameters(DestroyType, EnemyExplosion, SelfDestructDelay, BaseLocalScale, BulgeOutScale);
+            case DestroyType.ShakeUnstable:
+                return new ExplosionParameters(DestroyType, EnemyExplosion, ShakeDuration, MaxShakeMagnitude, MagnitudeOverTime);
+            case DestroyType.Instant:
+                return new ExplosionParameters(DestroyType, EnemyExplosion);
+            default:
+                return new ExplosionParameters(DestroyType.Instant, EnemyExplosion);
+        }
+    }
 }

@@ -1,10 +1,14 @@
+using NaughtyAttributes;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.AI;
-using StarterAssets;
 
 public class Robot : Enemy
 {
     [SerializeField] float robotChasingRadius = 10f;
+
+    [Header("Explosion When Approaching Player")]
+    [SerializeField] ExplosionBehaviorSO explosionBehavior;
 
     FirstPersonController playerController;
     Animator robotAnimator;
