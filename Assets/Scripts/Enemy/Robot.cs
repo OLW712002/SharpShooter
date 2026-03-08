@@ -2,13 +2,14 @@ using NaughtyAttributes;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Robot : Enemy
 {
     [SerializeField] float robotChasingRadius = 10f;
 
     [Header("Explosion When Approaching Player")]
-    [SerializeField] ExplosionBehaviorSO explosionBehavior;
+    [SerializeField] BulgeOutExplosion bulgeOutExplosion;
 
     FirstPersonController playerController;
     Animator robotAnimator;
@@ -69,7 +70,15 @@ public class Robot : Enemy
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            StartCoroutine(robotHealth.Exploding(robotHealth.GetParameterForExplosion()));
+            //StartCoroutine(robotHealth.Exploding(robotHealth.GetParameterForExplosion()));
+            StartCoroutine(ExplodeSequence());
         }
+    }
+
+    IEnumerator ExplodeSequence()
+    {
+        yield return StartCoroutine(bulgeOutExplosion.ExplodeBehavior(transform));
+        //yield return new WaitForSeconds(bulgeOutExplosion.GetSelfDestructDelay());
+        ExplodeAndSelfDestroy(bulgeOutExplosion.GetEnemyExplosion(), bulgeOutExplosion.GetExplosionOffset());
     }
 }

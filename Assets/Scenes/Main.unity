@@ -6154,18 +6154,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6894997713602762237, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
-      propertyPath: explosionBehavior
-      value: 
-      objectReference: {fileID: 11400000, guid: decd54971218f2848b853d5742f91df9, type: 2}
-    - target: {fileID: 8291010079914187836, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
-      propertyPath: destroyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291010079914187836, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
-      propertyPath: enemyHealth
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
