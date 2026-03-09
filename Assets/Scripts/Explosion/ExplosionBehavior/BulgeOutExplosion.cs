@@ -12,7 +12,6 @@ public class BulgeOutExplosion
 
     public IEnumerator ExplodeBehavior(Transform ownerTransform)
     {
-        Debug.Log("BulgeOutExplosion Explode called");
         ExplosionParameters explosionParameters = new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, ownerTransform.localScale, enemyBulgeOutScale);
 
         Vector3 startValue = explosionParameters.BaseLocalScale;
@@ -25,9 +24,6 @@ public class BulgeOutExplosion
             yield return null;
         }
         ownerTransform.localScale = targetValue;
-
-        //Instantiate(explosionParameters.EnemyExplosion, ownerTransform.position + explosionOffset, Quaternion.identity);
-        //Destroy(ownerTransform.gameObject);
     }
 
     public GameObject GetEnemyExplosion()

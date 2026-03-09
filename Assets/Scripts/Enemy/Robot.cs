@@ -14,7 +14,6 @@ public class Robot : Enemy
     FirstPersonController playerController;
     Animator robotAnimator;
     NavMeshAgent agent;
-    EnemyHealth robotHealth;
 
     const string robotChasingString = "isChasing";
 
@@ -24,7 +23,6 @@ public class Robot : Enemy
     {
         agent = GetComponent<NavMeshAgent>();
         robotAnimator = GetComponentInChildren<Animator>();
-        robotHealth = GetComponent<EnemyHealth>();
     }
 
     void Start()
@@ -70,7 +68,6 @@ public class Robot : Enemy
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            //StartCoroutine(robotHealth.Exploding(robotHealth.GetParameterForExplosion()));
             StartCoroutine(ExplodeSequence());
         }
     }
@@ -78,7 +75,6 @@ public class Robot : Enemy
     IEnumerator ExplodeSequence()
     {
         yield return StartCoroutine(bulgeOutExplosion.ExplodeBehavior(transform));
-        //yield return new WaitForSeconds(bulgeOutExplosion.GetSelfDestructDelay());
         ExplodeAndSelfDestroy(bulgeOutExplosion.GetEnemyExplosion(), bulgeOutExplosion.GetExplosionOffset());
     }
 }
