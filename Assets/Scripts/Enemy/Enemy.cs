@@ -10,4 +10,10 @@ public class Enemy : MonoBehaviour
             Instantiate(explosionPrefab, transform.position + explosionOffset, Quaternion.identity);
             Destroy(this.gameObject);
     }
+
+    //IEnumerator ExplodeSequence()
+    //{
+    //    yield return StartCoroutine(bulgeOutExplosion.ExplodeBehavior(transform));
+    //    ExplodeAndSelfDestroy(bulgeOutExplosion.GetEnemyExplosion(), bulgeOutExplosion.GetExplosionOffset());
+    //}
 }

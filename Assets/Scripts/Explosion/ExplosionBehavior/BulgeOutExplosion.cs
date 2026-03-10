@@ -5,10 +5,12 @@ using System.Collections;
 public class BulgeOutExplosion
 {
     DestroyType destroyType = DestroyType.BulgeOut;
+
     [SerializeField] GameObject enemyExplosion;
     [SerializeField] Vector3 explosionOffset = Vector3.zero;
-    [SerializeField] float enemySelfDestructDelay = 0f;
-    [SerializeField] float enemyBulgeOutScale = 1f;
+
+    [SerializeField] float enemySelfDestructDelay = 1f;
+    [SerializeField] float enemyBulgeOutScale = 2f;
 
     public IEnumerator ExplodeBehavior(Transform ownerTransform)
     {
@@ -24,6 +26,17 @@ public class BulgeOutExplosion
             yield return null;
         }
         ownerTransform.localScale = targetValue;
+
+        //Vector3 startValue = ownerTransform.localScale;
+        //Vector3 targetValue = ownerTransform.localScale * enemyBulgeOutScale;
+        //float elapsedTimeBulge = 0f;
+        //while (elapsedTimeBulge < enemySelfDestructDelay)
+        //{
+        //    elapsedTimeBulge += Time.deltaTime;
+        //    ownerTransform.localScale = Vector3.Lerp(startValue, targetValue, elapsedTimeBulge / enemySelfDestructDelay);
+        //    yield return null;
+        //}
+        //ownerTransform.localScale = targetValue;
     }
 
     public GameObject GetEnemyExplosion()
