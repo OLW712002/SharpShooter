@@ -68,13 +68,7 @@ public class Robot : Enemy
             Debug.Log("Kaboom");
             isBulgeOut = true;
             StopChasing();
-            StartCoroutine(ExplodeSequence());
+            StartCoroutine(ExplodeSequence(bulgeOutExplosion));
         }
-    }
-
-    IEnumerator ExplodeSequence()
-    {
-        yield return StartCoroutine(bulgeOutExplosion.ExplodeBehavior(transform));
-        ExplodeAndSelfDestroy(bulgeOutExplosion.GetEnemyExplosion(), bulgeOutExplosion.GetExplosionOffset());
     }
 }

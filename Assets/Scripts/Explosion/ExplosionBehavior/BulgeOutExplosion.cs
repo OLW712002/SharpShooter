@@ -2,17 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
-public class BulgeOutExplosion
+public class BulgeOutExplosion : ExplosionBehavior
 {
     DestroyType destroyType = DestroyType.BulgeOut;
-
-    [SerializeField] GameObject enemyExplosion;
-    [SerializeField] Vector3 explosionOffset = Vector3.zero;
 
     [SerializeField] float enemySelfDestructDelay = 1f;
     [SerializeField] float enemyBulgeOutScale = 2f;
 
-    public IEnumerator ExplodeBehavior(Transform ownerTransform)
+    public override IEnumerator BehaviorBeforeExploding(Transform ownerTransform)
     {
         ExplosionParameters explosionParameters = new ExplosionParameters(destroyType, enemyExplosion, enemySelfDestructDelay, ownerTransform.localScale, enemyBulgeOutScale);
 
@@ -39,17 +36,7 @@ public class BulgeOutExplosion
         //ownerTransform.localScale = targetValue;
     }
 
-    public GameObject GetEnemyExplosion()
-    {
-        return enemyExplosion;
-    }
-
-    public Vector3 GetExplosionOffset()
-    {
-        return explosionOffset;
-    }
-
-    public float GetSelfDestructDelay()
+    public override float GetSelfDestructDelay()
     {
         return enemySelfDestructDelay;
     }

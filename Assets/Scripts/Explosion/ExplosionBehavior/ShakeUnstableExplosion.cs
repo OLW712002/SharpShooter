@@ -2,18 +2,15 @@ using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
-public class ShakeUnstableExplosion
+public class ShakeUnstableExplosion : ExplosionBehavior
 {
     DestroyType destroyType = DestroyType.ShakeUnstable;
-
-    [SerializeField] GameObject enemyExplosion;
-    [SerializeField] Vector3 explosionOffset = Vector3.zero;
 
     [SerializeField] float enemyShakeDuration = 1f;
     [SerializeField] float enemyMaxShakeMagnitude = 10f;
     [SerializeField] AnimationCurve enemyMagnitudeOverTime = AnimationCurve.Constant(0f, 1f, 0f);
 
-    public IEnumerator ExplodeBehavior(Transform ownerTransform)
+    public override IEnumerator BehaviorBeforeExploding(Transform ownerTransform)
     {
         ExplosionParameters explosionParameters = new ExplosionParameters(destroyType, enemyExplosion, enemyShakeDuration, enemyMaxShakeMagnitude, enemyMagnitudeOverTime);
 
@@ -46,17 +43,7 @@ public class ShakeUnstableExplosion
         //ownerTransform.localPosition = originalLocalRotate;
     }
 
-    public GameObject GetEnemyExplosion()
-    {
-        return enemyExplosion;
-    }
-
-    public Vector3 GetExplosionOffset()
-    {
-        return explosionOffset;
-    }
-
-    public float GetSelfDestructDelay()
+    public override float GetSelfDestructDelay()
     {
         return enemyShakeDuration;
     }
