@@ -8,7 +8,7 @@ public class Robot : Enemy
 {
     [SerializeField] float robotChasingRadius = 10f;
 
-    [Header("Explosion When Approaching Player")]
+    [Header("Explosion Upon Approaching Player")]
     [SerializeField] BulgeOutExplosion bulgeOutExplosion;
 
     FirstPersonController playerController;
