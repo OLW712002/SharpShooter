@@ -16,10 +16,12 @@ public class EnemyHealth : MonoBehaviour
     bool IsInstant => destroyType == DestroyType.Instant;
 
     Enemy enemyClass;
+    ExplosionBehavior enemyExplosionBehavior;
 
     void Start()
     {
         enemyClass = GetComponent<Enemy>();
+        enemyExplosionBehavior = ExplosionBehavior.GetExplosionBehavior(destroyType, bulgeOutExplosion, shakeUnstableExplosion, instantExplosion);
     }
 
     public void TakeDamage(int dmg)
@@ -33,9 +35,7 @@ public class EnemyHealth : MonoBehaviour
                 Destroy(this.gameObject);
                 return;
             }
-
-            ExplosionBehavior explosionBehavior = enemyClass.GetExplosionBehavior(destroyType, bulgeOutExplosion, shakeUnstableExplosion, instantExplosion);
-            enemyClass.StartCoroutine(enemyClass.ExplodeSequence(explosionBehavior));
+            enemyClass.StartCoroutine(enemyClass.ExplodeSequence(enemyExplosionBehavior));
         }
     }
 }

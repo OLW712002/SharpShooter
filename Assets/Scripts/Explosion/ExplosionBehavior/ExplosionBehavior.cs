@@ -19,4 +19,18 @@ public abstract class ExplosionBehavior
     }
     public abstract float GetSelfDestructDelay();
 
+    public static ExplosionBehavior GetExplosionBehavior(DestroyType destroyType, BulgeOutExplosion bulgeOutExplosion, ShakeUnstableExplosion shakeUnstableExplosion, InstantExplosion instantExplosion)
+    {
+        switch (destroyType)
+        {
+            case DestroyType.BulgeOut:
+                return bulgeOutExplosion;
+            case DestroyType.ShakeUnstable:
+                return shakeUnstableExplosion;
+            case DestroyType.Instant:
+                return instantExplosion;
+            default:
+                return null;
+        }
+    }
 }
