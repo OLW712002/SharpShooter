@@ -6,14 +6,16 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 5;
 
+    [SerializeField] ExplosionBehaviorInspector explosionBehaviorInspector;
+
     [Header("Explosion Upon Death")]
     [SerializeField] DestroyType destroyType;
     [ShowIf("IsBulgeOut")][SerializeField] BulgeOutExplosion bulgeOutExplosion;
     [ShowIf("IsShakeUnstable")][SerializeField] ShakeUnstableExplosion shakeUnstableExplosion;
     [ShowIf("IsInstant")][SerializeField] InstantExplosion instantExplosion;
-    bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
-    bool IsShakeUnstable => destroyType == DestroyType.ShakeUnstable;
-    bool IsInstant => destroyType == DestroyType.Instant;
+    public bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
+    public bool IsShakeUnstable => destroyType == DestroyType.ShakeUnstable;
+    public bool IsInstant => destroyType == DestroyType.Instant;
 
     Enemy enemyClass;
     ExplosionBehavior enemyExplosionBehavior;

@@ -6155,6 +6155,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8291010079914187836, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
+      propertyPath: destroyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291010079914187836, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
       propertyPath: testDestroyType
       value: 2
       objectReference: {fileID: 0}
@@ -6162,6 +6166,10 @@ PrefabInstance:
       propertyPath: testInstantExplosion.enemyExplosion
       value: 
       objectReference: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
+    - target: {fileID: 8291010079914187836, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
+      propertyPath: explosionBehaviorInspector.destroyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6275,17 +6283,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 5
-  testDestroyType: 1
-  testBulgeOutExplosion:
+  explosionBehaviorInspector:
+    destroyType: 0
+    bulgeOutExplosion:
+      enemyExplosion: {fileID: 0}
+      explosionOffset: {x: 0, y: 0, z: 0}
+      enemySelfDestructDelay: 1
+      enemyBulgeOutScale: 2
+    shakeUnstableExplosion:
+      enemyExplosion: {fileID: 0}
+      explosionOffset: {x: 0, y: 0, z: 0}
+      enemyShakeDuration: 1
+      enemyMaxShakeMagnitude: 10
+      enemyMagnitudeOverTime:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    instantExplosion:
+      enemyExplosion: {fileID: 0}
+      explosionOffset: {x: 0, y: 0, z: 0}
+  destroyType: 1
+  bulgeOutExplosion:
     enemyExplosion: {fileID: 0}
     explosionOffset: {x: 0, y: 0, z: 0}
     enemySelfDestructDelay: 1
     enemyBulgeOutScale: 2
-  testShakeUnstableExplosion:
-    enemyExplosion: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
+  shakeUnstableExplosion:
+    enemyExplosion: {fileID: 0}
     explosionOffset: {x: 0, y: 0, z: 0}
-    enemyShakeDuration: 2
-    enemyMaxShakeMagnitude: 15
+    enemyShakeDuration: 1
+    enemyMaxShakeMagnitude: 10
     enemyMagnitudeOverTime:
       serializedVersion: 2
       m_Curve:
@@ -6300,9 +6347,9 @@ MonoBehaviour:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -6310,40 +6357,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  testInstantExplosion:
+  instantExplosion:
     enemyExplosion: {fileID: 0}
     explosionOffset: {x: 0, y: 0, z: 0}
-  destroyType: 1
-  enemyExplosion: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
-  enemyExplosionOffset: {x: 0, y: 1, z: 0}
-  enemySelfDestructDelay: 2
-  enemyBulgeOutScale: 2
-  enemyShakeDuration: 2
-  enemyMaxShakeMagnitude: 15
-  enemyMagnitudeOverTime:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!65 &875629010
 BoxCollider:
   m_ObjectHideFlags: 0
