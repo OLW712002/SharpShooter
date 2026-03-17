@@ -1,21 +1,9 @@
 using UnityEngine;
-using System.Collections;
-using NaughtyAttributes;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 5;
-
-    [SerializeField] ExplosionBehaviorInspector explosionBehaviorInspector;
-
-    [Header("Explosion Upon Death")]
-    [SerializeField] DestroyType destroyType;
-    [ShowIf("IsBulgeOut")][SerializeField] BulgeOutExplosion bulgeOutExplosion;
-    [ShowIf("IsShakeUnstable")][SerializeField] ShakeUnstableExplosion shakeUnstableExplosion;
-    [ShowIf("IsInstant")][SerializeField] InstantExplosion instantExplosion;
-    public bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
-    public bool IsShakeUnstable => destroyType == DestroyType.ShakeUnstable;
-    public bool IsInstant => destroyType == DestroyType.Instant;
+    [SerializeField] ExplosionBehaviorInspector explosionUponDeath;
 
     Enemy enemyClass;
     ExplosionBehavior enemyExplosionBehavior;
@@ -23,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         enemyClass = GetComponent<Enemy>();
-        enemyExplosionBehavior = ExplosionBehavior.GetExplosionBehavior(destroyType, bulgeOutExplosion, shakeUnstableExplosion, instantExplosion);
+        enemyExplosionBehavior = explosionUponDeath.GetSelectedBehavior();
     }
 
     public void TakeDamage(int dmg)

@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using UnityEngine;
 
 public enum DestroyType
@@ -13,12 +12,20 @@ public enum DestroyType
 public class ExplosionBehaviorInspector
 {
     [SerializeField] DestroyType destroyType;
-    [ShowIf("IsBulgeOut")][SerializeField] BulgeOutExplosion bulgeOutExplosion;
-    [ShowIf("IsShakeUnstable")][SerializeField] ShakeUnstableExplosion shakeUnstableExplosion;
-    [ShowIf("IsInstant")][SerializeField] InstantExplosion instantExplosion;
-    bool IsBulgeOut => destroyType == DestroyType.BulgeOut;
-    bool IsShakeUnstable => destroyType == DestroyType.ShakeUnstable;
-    bool IsInstant => destroyType == DestroyType.Instant;
+    [SerializeField] BulgeOutExplosion bulgeOutExplosion;
+    [SerializeField] ShakeUnstableExplosion shakeUnstableExplosion;
+    [SerializeField] InstantExplosion instantExplosion;
+
+    public DestroyType SelectedDestroyType => destroyType;
+    public BulgeOutExplosion SelectedBulgeOut => bulgeOutExplosion;
+    public ShakeUnstableExplosion SelectedShakeUnstable => shakeUnstableExplosion;
+    public InstantExplosion SelectedInstant => instantExplosion;
+
+    
+    public ExplosionBehavior GetSelectedBehavior()
+    {
+        return ExplosionBehavior.GetExplosionBehavior(destroyType, bulgeOutExplosion, shakeUnstableExplosion, instantExplosion);
+    }
 }
 
 //public class ExplosionParameters
