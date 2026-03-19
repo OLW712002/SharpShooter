@@ -40,7 +40,7 @@ public class ShakeUnstableExplosion : ExplosionBehavior
             ownerTransform.localEulerAngles = originalLocalRotate + new Vector3(0f, 0f, offsetZ);
             yield return null;
         }
-        ownerTransform.localPosition = originalLocalRotate;
+        ownerTransform.localEulerAngles = originalLocalRotate;
     }
 
     public override float GetSelfDestructDelay()

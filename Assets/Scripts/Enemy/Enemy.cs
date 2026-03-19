@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
 
     void ExplodeAndSelfDestroy(GameObject explosionPrefab, Vector3 explosionOffset)
     {
-            Instantiate(explosionPrefab, transform.position + explosionOffset, Quaternion.identity);
-            Destroy(this.gameObject);
+        Instantiate(explosionPrefab, transform.position + explosionOffset, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     public IEnumerator ExplodeSequence(ExplosionBehavior explosionBehavior)
