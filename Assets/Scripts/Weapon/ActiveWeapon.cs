@@ -80,7 +80,8 @@ public class ActiveWeapon : Weapon
         {
             hit.collider.GetComponentInParent<EnemyHealth>()?.TakeDamage(weapon.gunDmg);
         }
-        if (hit.point != null && hit.point != Vector3.zero)
+        //Ignore hit.point == Vector3.zero because of raycast hitting nothing.
+        if (hit.point != null && hit.point != Vector3.zero) 
         {
             Destroy(Instantiate(weapon.hitVFX, hit.point, Quaternion.identity, vfxParent), 5f);
         }

@@ -20,6 +20,6 @@ public class ExplosionDmg : PlayerDamaged
     {
         int playerLayerMask = LayerMask.GetMask(playerLayerString);
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, radius, playerLayerMask, QueryTriggerInteraction.Ignore);
-        ReducePlayerHealth(hitCollider, explodeDmg);
+        HitPlayer(hitCollider, explodeDmg);
     }
 }

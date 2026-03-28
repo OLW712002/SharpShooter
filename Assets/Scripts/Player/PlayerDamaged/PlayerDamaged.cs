@@ -4,14 +4,19 @@ public class PlayerDamaged : MonoBehaviour
 {
     protected const string playerLayerString = "Player";
 
-    protected void ReducePlayerHealth(Collider[] hitCollider, int dmg)
+    protected void HitPlayer(Collider[] hitCollider, int dmg)
     {
         foreach (Collider collider in hitCollider)
         {
-            PlayerHealth playerHealth = GetComponentInParent<PlayerHealth>();
+            PlayerHealth playerHealth = collider.GetComponentInParent<PlayerHealth>();
             if (!playerHealth) continue;
             playerHealth.TakeDamage(dmg);
             break;
         }
+    }
+
+    protected void HitOther(Collider hitCollider)
+    {
+
     }
 }

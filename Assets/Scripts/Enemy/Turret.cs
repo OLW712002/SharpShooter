@@ -16,7 +16,8 @@ public class Turret : Enemy
 
     void Update()
     {
-        turretHead.LookAt(target);
+        if (!target) return;
+        turretHead.LookAt(target.position - new Vector3(0,1,0));
     }
 
     IEnumerator FireRoutine()
