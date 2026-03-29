@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretDmg: 1
+  projectileSpeed: 10

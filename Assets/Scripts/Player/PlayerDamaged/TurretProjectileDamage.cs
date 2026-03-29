@@ -5,6 +5,8 @@ public class TurretProjectileDamage : PlayerDamaged
     [SerializeField] int turretDmg = 1;
     [SerializeField] float projectileSpeed = 10f;
 
+    bool hasHitPlayer = false;
+
     void Start()
     {
         Destroy(gameObject, 10f);
@@ -12,21 +14,27 @@ public class TurretProjectileDamage : PlayerDamaged
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * projectileSpeed);
+        if (hasHitPlayer) return;
+        transform.Translate(Vector3.forward * Time.fixedDeltaTime * projectileSpeed);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
+        hasHitPlayer = true;
+        transform.position = other.ClosestPoint(transform.position);
+        Debug.Log(transform.position);
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Turret projectile hit player: " + other.name);
             int playerLayerMask = LayerMask.GetMask(playerLayerString);
             Collider[] hitCollider = Physics.OverlapSphere(transform.position, 0.1f, playerLayerMask, QueryTriggerInteraction.Ignore);
             HitPlayer(hitCollider, turretDmg);
             Destroy(gameObject);
         }
-        else if (!other.CompareTag("Player"))
+        else
         {
+            Debug.Log("Turret projectile hit: " + other.name);
             Destroy(gameObject);
         }
     }
