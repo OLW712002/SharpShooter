@@ -5,17 +5,21 @@ public class TurretProjectileDamage : PlayerDamaged
     [SerializeField] int turretDmg = 1;
     [SerializeField] float projectileSpeed = 10f;
 
+    Rigidbody rb;
+
     bool hasHitPlayer = false;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = transform.forward * projectileSpeed;
         Destroy(gameObject, 10f);
     }
 
     private void Update()
     {
         if (hasHitPlayer) return;
-        transform.Translate(Vector3.forward * Time.fixedDeltaTime * projectileSpeed);
+        //transform.Translate(Vector3.forward * Time.fixedDeltaTime * projectileSpeed);
     }
 
 
