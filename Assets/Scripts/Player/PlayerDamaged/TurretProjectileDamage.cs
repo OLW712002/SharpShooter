@@ -29,10 +29,13 @@ public class TurretProjectileDamage : PlayerDamaged
         Debug.Log(transform.position);
         if (other.CompareTag("Player"))
         {
+            //Use ClosestPoint and OverlapSphere
             transform.position = other.ClosestPoint(transform.position);
             Debug.Log("Turret projectile hit player: " + other.name);
             int playerLayerMask = LayerMask.GetMask(playerLayerString);
             Collider[] hitCollider = Physics.OverlapSphere(transform.position, 0.1f, playerLayerMask, QueryTriggerInteraction.Ignore);
+            
+            
             HitPlayer(hitCollider, turretDmg);
             Destroy(gameObject);
         }
