@@ -18,7 +18,7 @@ public class ExplosionDmg : PlayerDamaged
 
     void Explode()
     {
-        int playerLayerMask = LayerMask.GetMask(playerLayerString);
+        int playerLayerMask = LayerMask.GetMask(playerString);
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, radius, playerLayerMask, QueryTriggerInteraction.Ignore);
         HitPlayer(hitCollider, explodeDmg);
     }

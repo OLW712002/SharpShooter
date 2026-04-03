@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretDmg: 1
   projectileSpeed: 10
+  hitVFX: {fileID: 7107351301381839109, guid: 5660ba1b371505947b72c6f1d720b38b, type: 3}
 --- !u!54 &-3931465526427118432
 Rigidbody:
   m_ObjectHideFlags: 0

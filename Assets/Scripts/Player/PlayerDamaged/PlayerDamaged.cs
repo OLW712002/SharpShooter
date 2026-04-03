@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerDamaged : MonoBehaviour
 {
-    protected const string playerLayerString = "Player";
+    protected const string playerString = "Player";
+    protected const string pickupString = "Pickup";
 
     protected void HitPlayer(Collider[] hitCollider, int dmg)
     {
