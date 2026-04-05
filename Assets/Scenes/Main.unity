@@ -14777,6 +14777,9 @@ MonoBehaviour:
   fireRate: 1
   projectileSpawnPos: {fileID: 1826060221}
   projectilePrefab: {fileID: 1851741347125748332, guid: 737d9de9d3f12cf4f99a9afb4a167056, type: 3}
+  projectileDamage: 1
+  projectileSpeed: 10
+  projectileHitVFX: {fileID: 7107351301381839109, guid: 5660ba1b371505947b72c6f1d720b38b, type: 3}
 --- !u!114 &1923862234
 MonoBehaviour:
   m_ObjectHideFlags: 0

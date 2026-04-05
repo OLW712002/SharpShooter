@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class TurretProjectileDamage : PlayerDamaged
 {
-    [SerializeField] int turretDmg = 1;
-    [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] GameObject hitVFX;
+    int projectileDmg = 1;
+    float projectileSpeed = 10f;
+    GameObject projectileHitVFX;
 
     Rigidbody rb;
 
-    bool hasHitPlayer = false;
+    public void Init(int dmg, float speed, GameObject hitVFX)
+    {
+        projectileDmg = dmg;
+        projectileSpeed = speed;
+        projectileHitVFX = hitVFX;
+    }
 
     void Start()
     {
@@ -17,18 +22,8 @@ public class TurretProjectileDamage : PlayerDamaged
         Destroy(gameObject, 10f);
     }
 
-    private void Update()
-    {
-        if (hasHitPlayer) return;
-        //transform.Translate(Vector3.forward * Time.fixedDeltaTime * projectileSpeed);
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(hitVFX, transform.position, Quaternion.identity);
-
-        hasHitPlayer = true;
         Debug.Log(transform.position);
         if (other.CompareTag(playerString))
         {
@@ -40,7 +35,7 @@ public class TurretProjectileDamage : PlayerDamaged
             //HitPlayer(hitCollider, turretDmg);
 
             //Normal detection
-            other.GetComponentInParent<PlayerHealth>()?.TakeDamage(turretDmg);
+            other.GetComponentInParent<PlayerHealth>()?.TakeDamage(projectileDmg);
 
             ReleaseHitVFXAndSelfDestroy();
         }
@@ -57,7 +52,7 @@ public class TurretProjectileDamage : PlayerDamaged
 
     void ReleaseHitVFXAndSelfDestroy()
     {
-        Instantiate(hitVFX, transform.position, Quaternion.identity);
+        Instantiate(projectileHitVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
