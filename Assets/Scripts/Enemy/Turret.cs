@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Turret : Enemy
 {
+    [SerializeField] float fireRate = 1f;
+
+    [Header("TurretProperty")]
     [SerializeField] Transform turretHead;
     [SerializeField] Transform target;
-    [SerializeField] float fireRate = 1f;
     [SerializeField] Transform projectileSpawnPos;
 
     [Header("Projectile")]
@@ -27,8 +29,9 @@ public class Turret : Enemy
 
     IEnumerator FireRoutine()
     {
-        while (true)
+        while (target)
         {
+            if (!target) break;
             yield return new WaitForSeconds(fireRate);
             TurretProjectileDamage turretProjectileDamage = Instantiate(projectilePrefab, projectileSpawnPos.position, turretHead.rotation).GetComponent<TurretProjectileDamage>();
             turretProjectileDamage.Init(projectileDamage, projectileSpeed, projectileHitVFX);
