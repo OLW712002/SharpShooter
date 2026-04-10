@@ -5393,6 +5393,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 811285372}
     - target: {fileID: 5440623338544992929, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: ingameContainer
+      value: 
+      objectReference: {fileID: 1299511248}
+    - target: {fileID: 5440623338544992929, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: gameoverContainer
+      value: 
+      objectReference: {fileID: 1920231674}
+    - target: {fileID: 5440623338544992929, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: playerDeathCamera
       value: 
       objectReference: {fileID: 1164883615}
@@ -15291,7 +15299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1920231675
 RectTransform:
   m_ObjectHideFlags: 0

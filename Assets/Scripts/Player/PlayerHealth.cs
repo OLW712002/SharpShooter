@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Transform weaponCamera;
     [SerializeField] Image[] shieldBars;
 
+    [Header("UI")]
+    [SerializeField] GameObject ingameContainer;
+    [SerializeField] GameObject gameoverContainer;
+
     int gameoverVirtualCameraPriority = 20;
 
     void Start()
@@ -18,17 +22,22 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        //playerHealth -= dmg;
         playerHealth = Mathf.Clamp(playerHealth -= dmg, 0, int.MaxValue);
         UpdateShieldBars();
 
         if (playerHealth <= 0)
         {
-            weaponCamera.parent = null;
-            playerDeathCamera.Priority = gameoverVirtualCameraPriority;
-            Debug.Log("PLayer Die");
-            Destroy(this.gameObject);
+            PlayerGameover();
         }
+    }
+
+    private void PlayerGameover()
+    {
+        weaponCamera.parent = null;
+        playerDeathCamera.Priority = gameoverVirtualCameraPriority;
+        ingameContainer.SetActive(false);
+        gameoverContainer.SetActive(true);
+        Destroy(this.gameObject);
     }
 
     void UpdateShieldBars()
