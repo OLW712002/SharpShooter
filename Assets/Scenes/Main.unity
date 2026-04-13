@@ -2033,6 +2033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapNavMeshSurface: {fileID: 414906148}
+  youWinText: {fileID: 1240817592}
+  enemiesLeftText: {fileID: 396109845}
 --- !u!4 &290268900
 Transform:
   m_ObjectHideFlags: 0
@@ -4979,7 +4981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enemies Left: 01'
+  m_text: 'Enemies Left: 00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bf14eac2b1f7b84780f4aaffcff4587, type: 2}
   m_sharedMaterial: {fileID: 4538935115640069916, guid: 4bf14eac2b1f7b84780f4aaffcff4587, type: 2}
@@ -7223,7 +7225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1240817593
 RectTransform:
   m_ObjectHideFlags: 0

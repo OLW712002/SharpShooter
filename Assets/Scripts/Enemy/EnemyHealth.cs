@@ -7,11 +7,15 @@ public class EnemyHealth : MonoBehaviour
 
     Enemy enemyClass;
     ExplosionBehavior enemyExplosionBehavior;
+    GameManager gameManager;
 
     void Start()
     {
         enemyClass = GetComponent<Enemy>();
         enemyExplosionBehavior = explosionUponDeath.GetSelectedBehavior();
+        gameManager = FindFirstObjectByType<GameManager>();
+
+        gameManager.AdjustEnemiesLeft(1);
     }
 
     public void TakeDamage(int dmg)
@@ -19,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth -= dmg;
         if (enemyHealth <= 0)
         {
+            gameManager.AdjustEnemiesLeft(-1);
             if (enemyClass == null)
             {
                 Debug.Log("No enemy class");
