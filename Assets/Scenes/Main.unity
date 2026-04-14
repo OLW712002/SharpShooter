@@ -6626,7 +6626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350601930298781218, guid: 3ab8a841610dee94aabc36539353b7ba, type: 3}
       propertyPath: storedAmmo
-      value: 7
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5908136090232391694, guid: 3ab8a841610dee94aabc36539353b7ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11353,7 +11353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275582872296247144, guid: 34e4dde50a7868044841270dad187d6b, type: 3}
       propertyPath: storedAmmo
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12708,7 +12708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018672759103452885, guid: a3b24cfc53a245442a28e4c511bfa1e5, type: 3}
       propertyPath: storedAmmo
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6322989353784862826, guid: a3b24cfc53a245442a28e4c511bfa1e5, type: 3}
       propertyPath: m_Name

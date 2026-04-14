@@ -15,12 +15,11 @@ MonoBehaviour:
   weaponPrefab: {fileID: 5959604082093917815, guid: e112bcede6ebd1f42878e86f3565c767, type: 3}
   pickupPrefab: {fileID: 3853432648898883594, guid: a7e10fee0abf7da4f98bfee7b0949654, type: 3}
   gunDmg: 1
-  fireCooldown: 0.3
+  fireCooldown: 0.1
   isAutomatic: 1
   canZoom: 0
   zoomFOV: 10
   zoomRotationSpeed: 0.3
-  maxAmmo: 10
-  currentAmmo: 0
+  maxAmmo: 50
   gunFlash: {fileID: 8525663656758953639, guid: 3f40e8e5befe1aa4ea0e8b98f62c6fa4, type: 3}
   hitVFX: {fileID: 4107296756544715228, guid: cb33c038cc0d09d4aa8ab51936310383, type: 3}

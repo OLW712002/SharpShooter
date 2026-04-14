@@ -20,7 +20,6 @@ MonoBehaviour:
   canZoom: 0
   zoomFOV: 10
   zoomRotationSpeed: 0.3
-  maxAmmo: 10
-  currentAmmo: 0
+  maxAmmo: 30
   gunFlash: {fileID: 5224515864280146138, guid: 6e5d574605155ab41829e9774de2bed6, type: 3}
   hitVFX: {fileID: 3499774932233767443, guid: bd2a66c5f5341384f8a3462a0fbb5944, type: 3}
