@@ -33,6 +33,9 @@ public class PickupWeapon : Pickups
 
         //Create new pickup weapon
         CreateNewPickup(oldWeaponSO, oldWeaponAmmoRemain, true);
+
+        //Destroy current pickup weapon
+        Destroy(gameObject);
     }
 
     void CreateNewWeapon(WeaponSO weaponSO, int ammoInNewWeapon, bool createWithParameter)

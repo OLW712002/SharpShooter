@@ -9,7 +9,7 @@ public class PickupAmmo : Pickups
         if (currentWeaponName == weaponSO.weaponPrefab.name)
         {
             currentWeapon.GetComponent<ActiveWeapon>().HandlePickup(this, storedAmmo);
-
+            Destroy(gameObject);
         }
     }
 }

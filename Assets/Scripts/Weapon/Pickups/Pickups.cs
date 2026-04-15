@@ -21,7 +21,6 @@ public abstract class Pickups : Weapon
         if (other.CompareTag(playerTagString))
         {
             OnPickup(weaponSO);
-            Destroy(gameObject);
         }
     }
 
