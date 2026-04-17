@@ -17,12 +17,14 @@ public class ActiveWeapon : Weapon
     PlayerInput playerInput;
     CinemachineVirtualCamera playerFollowCamera;
     Image zoomVignette;
+    Image fireCooldownUI;
     FirstPersonController playerController;
     TextMeshProUGUI ammoText;
     CinemachineImpulseSource cinemachineImpulseSource;
 
     const string vfxParentString = "VFX Parent";
     const string ammoTextString = "Ammo Text";
+    const string fireCooldownUIString = "Gun Cooldown";
 
     float elapsedTime = 0f;
     float defaultVerticalFOV;
@@ -35,6 +37,7 @@ public class ActiveWeapon : Weapon
         playerInput = FindFirstObjectByType<PlayerInput>();
         playerFollowCamera = FindFirstObjectByType<CinemachineVirtualCamera>();
         zoomVignette = GameObject.Find(zoomVigenetteString).GetComponent<Image>();
+        fireCooldownUI = GameObject.Find(fireCooldownUIString).GetComponent<Image>();
         playerController = GetComponentInParent<FirstPersonController>();
         ammoText = GameObject.Find(ammoTextString).GetComponent<TextMeshProUGUI>();
         cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
@@ -63,6 +66,7 @@ public class ActiveWeapon : Weapon
     void ShootProcess(WeaponSO weapon)
     {
         elapsedTime += Time.deltaTime;
+        fireCooldownUI.fillAmount = elapsedTime / weaponSO.fireCooldown;
         if (!starterAssetsInputs.shoot || elapsedTime < weaponSO.fireCooldown || storedAmmo <= 0) return;
 
         ReduceAmmo(1);
