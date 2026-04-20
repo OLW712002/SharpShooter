@@ -24,7 +24,6 @@ public class TurretProjectileDamage : PlayerDamaged
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(transform.position);
         if (other.CompareTag(playerString))
         {
             //Use ClosestPoint and OverlapSphere for detection
@@ -41,18 +40,18 @@ public class TurretProjectileDamage : PlayerDamaged
         }
         else if (other.CompareTag(pickupString))
         {
-            Debug.Log("Turret projectile hit pickup: " + other.name);
+            //Do nothing
         }
         else
         {
-            Debug.Log("Turret projectile hit: " + other.name);
             ReleaseHitVFXAndSelfDestroy();
         }
     }
 
     void ReleaseHitVFXAndSelfDestroy()
     {
-        Instantiate(projectileHitVFX, transform.position, Quaternion.identity);
+        GameObject hitVFX = Instantiate(projectileHitVFX, transform.position, Quaternion.identity);
+        Destroy(hitVFX, 5f);
         Destroy(gameObject);
     }
 }

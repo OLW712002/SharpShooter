@@ -4,6 +4,7 @@ using StarterAssets;
 
 public class SpawnGate : Enemy
 {
+    [SerializeField] GameObject model;
     [SerializeField] GameObject spawnedEnemy;
     [SerializeField] float spawnSpeedPerSec = 0.5f;
     [SerializeField] Transform spawnPoint;
@@ -11,6 +12,8 @@ public class SpawnGate : Enemy
     [SerializeField] float spawnRadius = 10f;
 
     FirstPersonController playerController;
+    
+    bool isDying = false;
 
     void Awake()
     {
@@ -24,7 +27,7 @@ public class SpawnGate : Enemy
 
     IEnumerator SpawnEnemy(GameObject enemy)
     {
-        while (playerController)
+        while (playerController && !isDying)
         {
             if (Vector3.Distance(transform.position, playerController.transform.position) < spawnRadius)
             {
@@ -33,5 +36,12 @@ public class SpawnGate : Enemy
             }
             yield return new WaitForSeconds(1/spawnSpeedPerSec);
         }
+    }
+
+    public override IEnumerator ExplodeSequence(ExplosionBehavior explosionBehavior)
+    {
+        isDying = true;
+        yield return StartCoroutine(explosionBehavior.BehaviorBeforeExploding(model.transform));
+        ExplodeAndSelfDestroy(explosionBehavior.GetEnemyExplosion(), explosionBehavior.GetExplosionOffset());
     }
 }

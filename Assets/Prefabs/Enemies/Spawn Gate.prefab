@@ -109,10 +109,10 @@ MonoBehaviour:
       enemySelfDestructDelay: 0
       enemyBulgeOutScale: 0
     shakeUnstableExplosion:
-      enemyExplosion: {fileID: 0}
+      enemyExplosion: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
       explosionOffset: {x: 0, y: 0, z: 0}
-      enemyShakeDuration: 0
-      enemyMaxShakeMagnitude: 0
+      enemyShakeDuration: 3
+      enemyMaxShakeMagnitude: 30
       enemyMagnitudeOverTime:
         serializedVersion: 2
         m_Curve:
@@ -138,7 +138,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
     instantExplosion:
-      enemyExplosion: {fileID: 175238, guid: 1f4112bd4f782b24aa495e573a287619, type: 3}
+      enemyExplosion: {fileID: 0}
       explosionOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &6889741478107546870
 MonoBehaviour:
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdb3f1fc2bdc8d49b622fe71c65e9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: {fileID: 1952490103418676736}
   spawnedEnemy: {fileID: 569472004378683372, guid: fe0300efee694fd4aaa682e85514bfe3, type: 3}
   spawnSpeedPerSec: 0.5
   spawnPoint: {fileID: 844078189923738358}
