@@ -5,14 +5,16 @@ public class TurretProjectileDamage : PlayerDamaged
     int projectileDmg = 1;
     float projectileSpeed = 10f;
     GameObject projectileHitVFX;
+    Transform projectileContainer;
 
     Rigidbody rb;
 
-    public void Init(int dmg, float speed, GameObject hitVFX)
+    public void Init(int dmg, float speed, GameObject hitVFX, Transform container)
     {
         projectileDmg = dmg;
         projectileSpeed = speed;
         projectileHitVFX = hitVFX;
+        projectileContainer = container;
     }
 
     void Start()
@@ -50,7 +52,7 @@ public class TurretProjectileDamage : PlayerDamaged
 
     void ReleaseHitVFXAndSelfDestroy()
     {
-        GameObject hitVFX = Instantiate(projectileHitVFX, transform.position, Quaternion.identity);
+        GameObject hitVFX = Instantiate(projectileHitVFX, transform.position, Quaternion.identity, projectileContainer);
         Destroy(hitVFX, 5f);
         Destroy(gameObject);
     }

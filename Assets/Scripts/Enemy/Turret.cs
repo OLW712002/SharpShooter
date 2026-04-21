@@ -15,6 +15,7 @@ public class Turret : Enemy
     [SerializeField] int projectileDamage = 1;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] GameObject projectileHitVFX;
+    [SerializeField] Transform projectileContainer;
 
     void Start()
     {
@@ -33,8 +34,8 @@ public class Turret : Enemy
         {
             if (!target) break;
             yield return new WaitForSeconds(fireRate);
-            TurretProjectileDamage turretProjectileDamage = Instantiate(projectilePrefab, projectileSpawnPos.position, turretHead.rotation).GetComponent<TurretProjectileDamage>();
-            turretProjectileDamage.Init(projectileDamage, projectileSpeed, projectileHitVFX);
+            TurretProjectileDamage turretProjectileDamage = Instantiate(projectilePrefab, projectileSpawnPos.position, turretHead.rotation, projectileContainer).GetComponent<TurretProjectileDamage>();
+            turretProjectileDamage.Init(projectileDamage, projectileSpeed, projectileHitVFX, projectileContainer);
         }
     }
 }

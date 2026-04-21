@@ -1831,7 +1831,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 232762265843980644, guid: 245dbd047e79be042bb85064f3b682e7, type: 3}
       propertyPath: m_Name
-      value: Spawn Gate
+      value: Spawn Gate (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3084907649421085257, guid: 245dbd047e79be042bb85064f3b682e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5489,7 +5489,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 232762265843980644, guid: 245dbd047e79be042bb85064f3b682e7, type: 3}
       propertyPath: m_Name
-      value: Spawn Gate (1)
+      value: Spawn Gate (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3084907649421085257, guid: 245dbd047e79be042bb85064f3b682e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6893,6 +6893,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab8a841610dee94aabc36539353b7ba, type: 3}
+--- !u!1 &744122089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744122090}
+  m_Layer: 0
+  m_Name: Projectile Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &744122090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744122089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &811285371 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5936537731219470678, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -7212,6 +7243,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 968802325}
+    - target: {fileID: 1262142843951733752, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
+      propertyPath: projectileContainer
+      value: 
+      objectReference: {fileID: 744122090}
     - target: {fileID: 2389563883716306246, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
       propertyPath: m_Name
       value: Turret (2)
@@ -7273,6 +7308,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 968802325}
+    - target: {fileID: 1262142843951733752, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
+      propertyPath: projectileContainer
+      value: 
+      objectReference: {fileID: 744122090}
     - target: {fileID: 2389563883716306246, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
       propertyPath: m_Name
       value: Turret (3)
@@ -16934,6 +16973,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 968802325}
+    - target: {fileID: 1262142843951733752, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
+      propertyPath: projectileContainer
+      value: 
+      objectReference: {fileID: 744122090}
     - target: {fileID: 2389563883716306246, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
       propertyPath: m_Name
       value: Turret (1)
@@ -17124,6 +17167,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 968802325}
+    - target: {fileID: 1262142843951733752, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
+      propertyPath: projectileContainer
+      value: 
+      objectReference: {fileID: 744122090}
     - target: {fileID: 2389563883716306246, guid: 7ad1e5a91b66c74469806a737b453805, type: 3}
       propertyPath: m_Name
       value: Turret
@@ -17394,3 +17441,4 @@ SceneRoots:
   - {fileID: 1253820359}
   - {fileID: 290268900}
   - {fileID: 280731372}
+  - {fileID: 744122090}
